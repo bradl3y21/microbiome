@@ -1,0 +1,5 @@
+34f133ee2cee29eeccea10fd10c09963  ncbi_dataset/data/assembly_data_report.jsonl
+b8b18c2da0cb95376bb8de30f5a8cab7  ncbi_dataset/data/GCF_000006765.1/GCF_000006765.1_ASM676v1_genomic.fna
+612e866d6f4417022ba1f999d44db203  ncbi_dataset/data/GCF_000006765.1/genomic.gff
+53ee445ee2c2d45fa77da75473b172e5  ncbi_dataset/data/GCF_000006765.1/sequence_report.jsonl
+b1468cf8b5a1d53a198c2c756e1790f6  ncbi_dataset/data/dataset_catalog.json

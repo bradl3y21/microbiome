@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "description": "Real, complete RefSeq bacterial genome assemblies and NCBI Datasets source packages. The accession.version is the canonical biological record identifier.",
+  "retrieval_tool": "NCBI Datasets v2 REST API",
+  "retrieval_documentation": "https://www.ncbi.nlm.nih.gov/datasets/docs/v2/how-tos/genomes/download-genome/",
+  "package_documentation": "https://www.ncbi.nlm.nih.gov/datasets/docs/v2/reference-docs/data-packages/genome/",
+  "checksum_algorithm": "SHA-256 (computed locally over exact byte contents; sizes are bytes)",
+  "terms_notice": "NCBI states it places no restrictions on use or distribution of molecular data and does not accept submissions whose submitters request reuse/redistribution restrictions. However, original submitters (or a country of origin) may claim patent, copyright, or other IP rights in portions; NCBI does not assess such claims or transfer submitter rights. No separate per-assembly license field was supplied in this package. Do not interpret this as a blanket public-domain or CC0 grant; preserve accession attribution and review any record-specific submitter claim before redistribution.",
+  "terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/#data",
+  "genomes": [
+    {
+      "accession": "GCF_000005845.2",
+      "organism": "Escherichia coli str. K-12 substr. MG1655",
+      "tax_id": 511145,
+      "assembly_name": "ASM584v2",
+      "assembly_level": "Complete Genome",
+      "sequence_count": 1,
+      "sequence_length_bp": 4641652,
+      "source_url": "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000005845.2/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=SEQUENCE_REPORT",
+      "assembly_record_url": "https://www.ncbi.nlm.nih.gov/assembly/GCF_000005845.2/",
+      "fetched_at_utc": "2026-10-17T07:46:03Z",
+      "fetch_date_utc": "2026-10-17",
+      "size_bytes": 4699745,
+      "sha256": "53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4",
+      "sequence_file": {
+        "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/GCF_000005845.2/GCF_000005845.2_ASM584v2_genomic.fna",
+        "role": "genome_sequence_fasta",
+        "size_bytes": 4699745,
+        "sha256": "53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4"
+      },
+      "annotation_file": {
+        "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/GCF_000005845.2/genomic.gff",
+        "role": "genome_annotation_gff3",
+        "size_bytes": 2314238,
+        "sha256": "68d25735ccde6d37af68613dca57a588ae69423f0ecee99b0f29d596eff7accb"
+      },
+      "source_package": {
+        "path": "data/genomes/GCF_000005845.2/ncbi_datasets.zip",
+        "role": "original_ncbi_datasets_zip",
+        "size_bytes": 1771714,
+        "sha256": "fe010b529cb577c6a0e8e8eb6758d455f1d9be9f9cf33d680f6bd3079a0ea515"
+      },
+      "license_or_terms": "NCBI states it places no restrictions on use or distribution of molecular data and does not accept submissions whose submitters request reuse/redistribution restrictions. However, original submitters (or a country of origin) may claim patent, copyright, or other IP rights in portions; NCBI does not assess such claims or transfer submitter rights. No separate per-assembly license field was supplied in this package. Do not interpret this as a blanket public-domain or CC0 grant; preserve accession attribution and review any record-specific submitter claim before redistribution.",
+      "terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/#data",
+      "additional_terms_reference": "https://www.ncbi.nlm.nih.gov/genbank/#datausage",
+      "artifacts": [
+        {
+          "path": "data/genomes/GCF_000005845.2/md5sum.txt",
+          "role": "ncbi_md5_checksum_list",
+          "size_bytes": 427,
+          "sha256": "b4ef2bee37a3b3f57821838f4c68c7c53b2aef8fce1565e08c31a95cf9d42f23"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/assembly_data_report.jsonl",
+          "role": "assembly_metadata_jsonl",
+          "size_bytes": 2817,
+          "sha256": "d3df0b103323aed3c356450708165ea8c1970970afb225ad41f0f25f8389954d"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/dataset_catalog.json",
+          "role": "ncbi_dataset_catalog",
+          "size_bytes": 703,
+          "sha256": "6be95d635a29ee18d54fe2e49aebab91492ccb7575b193864166029c8400980b"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/GCF_000005845.2/GCF_000005845.2_ASM584v2_genomic.fna",
+          "role": "genome_sequence_fasta",
+          "size_bytes": 4699745,
+          "sha256": "53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/GCF_000005845.2/genomic.gff",
+          "role": "genome_annotation_gff3",
+          "size_bytes": 2314238,
+          "sha256": "68d25735ccde6d37af68613dca57a588ae69423f0ecee99b0f29d596eff7accb"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/ncbi_dataset/data/GCF_000005845.2/sequence_report.jsonl",
+          "role": "sequence_metadata_jsonl",
+          "size_bytes": 311,
+          "sha256": "72e2a49b98a6851372e4d37a4f7ca1869afd1c94e1d0d56436745ac94cbaf387"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/ncbi_datasets.zip",
+          "role": "original_ncbi_datasets_zip",
+          "size_bytes": 1771714,
+          "sha256": "fe010b529cb577c6a0e8e8eb6758d455f1d9be9f9cf33d680f6bd3079a0ea515"
+        },
+        {
+          "path": "data/genomes/GCF_000005845.2/README.md",
+          "role": "ncbi_package_readme",
+          "size_bytes": 1593,
+          "sha256": "4b40504b9d718336b19ce451ff7e117494105e58e2351fee9563af7886320eec"
+        }
+      ]
+    },
+    {
+      "accession": "GCF_000006765.1",
+      "organism": "Pseudomonas aeruginosa PAO1",
+      "tax_id": 208964,
+      "assembly_name": "ASM676v1",
+      "assembly_level": "Complete Genome",
+      "sequence_count": 1,
+      "sequence_length_bp": 6264404,
+      "source_url": "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000006765.1/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=SEQUENCE_REPORT",
+      "assembly_record_url": "https://www.ncbi.nlm.nih.gov/assembly/GCF_000006765.1/",
+      "fetched_at_utc": "2026-10-18T01:22:29Z",
+      "fetch_date_utc": "2026-10-18",
+      "size_bytes": 6342768,
+      "sha256": "3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117",
+      "sequence_file": {
+        "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/GCF_000006765.1/GCF_000006765.1_ASM676v1_genomic.fna",
+        "role": "genome_sequence_fasta",
+        "size_bytes": 6342768,
+        "sha256": "3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117"
+      },
+      "annotation_file": {
+        "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/GCF_000006765.1/genomic.gff",
+        "role": "genome_annotation_gff3",
+        "size_bytes": 3243384,
+        "sha256": "0f27a3422dd6d0515df30dc45331100da49fc6d6bf2bc4d61230c907f9cba54b"
+      },
+      "source_package": {
+        "path": "data/genomes/GCF_000006765.1/ncbi_datasets.zip",
+        "role": "original_ncbi_datasets_zip",
+        "size_bytes": 2156875,
+        "sha256": "9567bc4462e971ccb368a74acc7bd3b0653eba59e5bf120aedfbc905e43113c3"
+      },
+      "license_or_terms": "NCBI states it places no restrictions on use or distribution of molecular data and does not accept submissions whose submitters request reuse/redistribution restrictions. However, original submitters (or a country of origin) may claim patent, copyright, or other IP rights in portions; NCBI does not assess such claims or transfer submitter rights. No separate per-assembly license field was supplied in this package. Do not interpret this as a blanket public-domain or CC0 grant; preserve accession attribution and review any record-specific submitter claim before redistribution.",
+      "terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/#data",
+      "additional_terms_reference": "https://www.ncbi.nlm.nih.gov/genbank/#datausage",
+      "artifacts": [
+        {
+          "path": "data/genomes/GCF_000006765.1/README.md",
+          "role": "ncbi_package_readme",
+          "size_bytes": 1593,
+          "sha256": "4b40504b9d718336b19ce451ff7e117494105e58e2351fee9563af7886320eec"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/md5sum.txt",
+          "role": "ncbi_md5_checksum_list",
+          "size_bytes": 427,
+          "sha256": "b91568097d76140b6ded508175c88685134ccc334e66389f3f067102e5b59ec5"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/GCF_000006765.1/GCF_000006765.1_ASM676v1_genomic.fna",
+          "role": "genome_sequence_fasta",
+          "size_bytes": 6342768,
+          "sha256": "3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/GCF_000006765.1/genomic.gff",
+          "role": "genome_annotation_gff3",
+          "size_bytes": 3243384,
+          "sha256": "0f27a3422dd6d0515df30dc45331100da49fc6d6bf2bc4d61230c907f9cba54b"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/GCF_000006765.1/sequence_report.jsonl",
+          "role": "sequence_metadata_jsonl",
+          "size_bytes": 315,
+          "sha256": "e8046457f0b5dc90e80d382a597dbc57a9f9349e0f1dd69627acd3b4c27baa34"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/assembly_data_report.jsonl",
+          "role": "assembly_metadata_jsonl",
+          "size_bytes": 2675,
+          "sha256": "213e5e1380aa0459d07ac3d8571cb59570c311d9b1d10a694ba01f054129d7a9"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/ncbi_dataset/data/dataset_catalog.json",
+          "role": "ncbi_dataset_catalog",
+          "size_bytes": 703,
+          "sha256": "ba4b647c49d57fe7685ca4fb7f030845384a97345c0048a5f733a266e66058af"
+        },
+        {
+          "path": "data/genomes/GCF_000006765.1/ncbi_datasets.zip",
+          "role": "original_ncbi_datasets_zip",
+          "size_bytes": 2156875,
+          "sha256": "9567bc4462e971ccb368a74acc7bd3b0653eba59e5bf120aedfbc905e43113c3"
+        }
+      ]
+    },
+    {
+      "accession": "GCF_000009045.1",
+      "organism": "Bacillus subtilis subsp. subtilis str. 168",
+      "tax_id": 224308,
+      "assembly_name": "ASM904v1",
+      "assembly_level": "Complete Genome",
+      "sequence_count": 1,
+      "sequence_length_bp": 4215606,
+      "source_url": "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000009045.1/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=SEQUENCE_REPORT",
+      "assembly_record_url": "https://www.ncbi.nlm.nih.gov/assembly/GCF_000009045.1/",
+      "fetched_at_utc": "2026-10-17T07:46:03Z",
+      "fetch_date_utc": "2026-10-17",
+      "size_bytes": 4268374,
+      "sha256": "59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e",
+      "sequence_file": {
+        "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/GCF_000009045.1/GCF_000009045.1_ASM904v1_genomic.fna",
+        "role": "genome_sequence_fasta",
+        "size_bytes": 4268374,
+        "sha256": "59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e"
+      },
+      "annotation_file": {
+        "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/GCF_000009045.1/genomic.gff",
+        "role": "genome_annotation_gff3",
+        "size_bytes": 3809073,
+        "sha256": "3c877fd4660b532ecbce74c423c000a73751dc5a04104d0e84653c299720f542"
+      },
+      "source_package": {
+        "path": "data/genomes/GCF_000009045.1/ncbi_datasets.zip",
+        "role": "original_ncbi_datasets_zip",
+        "size_bytes": 1803557,
+        "sha256": "b5ba29a3b02e7795f32c046e256675f57fc7de0cbf4e9f4c14896f82f38df2b6"
+      },
+      "license_or_terms": "NCBI states it places no restrictions on use or distribution of molecular data and does not accept submissions whose submitters request reuse/redistribution restrictions. However, original submitters (or a country of origin) may claim patent, copyright, or other IP rights in portions; NCBI does not assess such claims or transfer submitter rights. No separate per-assembly license field was supplied in this package. Do not interpret this as a blanket public-domain or CC0 grant; preserve accession attribution and review any record-specific submitter claim before redistribution.",
+      "terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/#data",
+      "additional_terms_reference": "https://www.ncbi.nlm.nih.gov/genbank/#datausage",
+      "artifacts": [
+        {
+          "path": "data/genomes/GCF_000009045.1/md5sum.txt",
+          "role": "ncbi_md5_checksum_list",
+          "size_bytes": 427,
+          "sha256": "1df58615acc80dd204cc602646e7f971f9e38da70a8f7a3476a81839f909de16"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/assembly_data_report.jsonl",
+          "role": "assembly_metadata_jsonl",
+          "size_bytes": 3403,
+          "sha256": "3a2afa8bfde596664d302652e39a13661fc075285ed593d8018f9e9bb0d0098d"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/dataset_catalog.json",
+          "role": "ncbi_dataset_catalog",
+          "size_bytes": 703,
+          "sha256": "5c4ba8ade21640cd93ffd3bdb5351bb05181bbd10a8cf929729f2213a30700d9"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/GCF_000009045.1/GCF_000009045.1_ASM904v1_genomic.fna",
+          "role": "genome_sequence_fasta",
+          "size_bytes": 4268374,
+          "sha256": "59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/GCF_000009045.1/genomic.gff",
+          "role": "genome_annotation_gff3",
+          "size_bytes": 3809073,
+          "sha256": "3c877fd4660b532ecbce74c423c000a73751dc5a04104d0e84653c299720f542"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/ncbi_dataset/data/GCF_000009045.1/sequence_report.jsonl",
+          "role": "sequence_metadata_jsonl",
+          "size_bytes": 283,
+          "sha256": "828783c1dff856c94750a794a437dcd67824133206208e1743f11c327dc510bb"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/ncbi_datasets.zip",
+          "role": "original_ncbi_datasets_zip",
+          "size_bytes": 1803557,
+          "sha256": "b5ba29a3b02e7795f32c046e256675f57fc7de0cbf4e9f4c14896f82f38df2b6"
+        },
+        {
+          "path": "data/genomes/GCF_000009045.1/README.md",
+          "role": "ncbi_package_readme",
+          "size_bytes": 1593,
+          "sha256": "4b40504b9d718336b19ce451ff7e117494105e58e2351fee9563af7886320eec"
+        }
+      ]
+    },
+    {
+      "accession": "GCF_000010465.1",
+      "organism": "Staphylococcus aureus subsp. aureus str. Newman",
+      "tax_id": 426430,
+      "assembly_name": "ASM1046v1",
+      "assembly_level": "Complete Genome",
+      "sequence_count": 1,
+      "sequence_length_bp": 2878897,
+      "source_url": "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000010465.1/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=SEQUENCE_REPORT",
+      "assembly_record_url": "https://www.ncbi.nlm.nih.gov/assembly/GCF_000010465.1/",
+      "fetched_at_utc": "2026-10-18T01:30:29Z",
+      "fetch_date_utc": "2026-10-18",
+      "size_bytes": 2914964,
+      "sha256": "7d17c88bdadadbdf304d731de8bef4e7106357b94e495f568dd62538d9a30c01",
+      "sequence_file": {
+        "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/GCF_000010465.1/GCF_000010465.1_ASM1046v1_genomic.fna",
+        "role": "genome_sequence_fasta",
+        "size_bytes": 2914964,
+        "sha256": "7d17c88bdadadbdf304d731de8bef4e7106357b94e495f568dd62538d9a30c01"
+      },
+      "annotation_file": {
+        "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/GCF_000010465.1/genomic.gff",
+        "role": "genome_annotation_gff3",
+        "size_bytes": 1756895,
+        "sha256": "65592581a886f4888e2cbfa70a5226088139a1203ba205842dda4a81f15268f7"
+      },
+      "source_package": {
+        "path": "data/genomes/GCF_000010465.1/ncbi_datasets.zip",
+        "role": "original_ncbi_datasets_zip",
+        "size_bytes": 1099310,
+        "sha256": "d3fae2d8b8e5e072eac978aa18b9b91ea611a9dae90fb9824a2423c208d3c241"
+      },
+      "license_or_terms": "NCBI states it places no restrictions on use or distribution of molecular data and does not accept submissions whose submitters request reuse/redistribution restrictions. However, original submitters (or a country of origin) may claim patent, copyright, or other IP rights in portions; NCBI does not assess such claims or transfer submitter rights. No separate per-assembly license field was supplied in this package. Do not interpret this as a blanket public-domain or CC0 grant; preserve accession attribution and review any record-specific submitter claim before redistribution.",
+      "terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/#data",
+      "additional_terms_reference": "https://www.ncbi.nlm.nih.gov/genbank/#datausage",
+      "artifacts": [
+        {
+          "path": "data/genomes/GCF_000010465.1/README.md",
+          "role": "ncbi_package_readme",
+          "size_bytes": 1593,
+          "sha256": "4b40504b9d718336b19ce451ff7e117494105e58e2351fee9563af7886320eec"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/md5sum.txt",
+          "role": "ncbi_md5_checksum_list",
+          "size_bytes": 428,
+          "sha256": "8ce7e86b35de7789fa9a16f800dde4d093a215edd2debf64628cbc7d2e845250"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/GCF_000010465.1/GCF_000010465.1_ASM1046v1_genomic.fna",
+          "role": "genome_sequence_fasta",
+          "size_bytes": 2914964,
+          "sha256": "7d17c88bdadadbdf304d731de8bef4e7106357b94e495f568dd62538d9a30c01"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/GCF_000010465.1/genomic.gff",
+          "role": "genome_annotation_gff3",
+          "size_bytes": 1756895,
+          "sha256": "65592581a886f4888e2cbfa70a5226088139a1203ba205842dda4a81f15268f7"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/GCF_000010465.1/sequence_report.jsonl",
+          "role": "sequence_metadata_jsonl",
+          "size_bytes": 314,
+          "sha256": "5fd3423be9ea7a4f705d8d8b4392c354f8f2447bcb041bbeb00ae6ef156961d1"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/assembly_data_report.jsonl",
+          "role": "assembly_metadata_jsonl",
+          "size_bytes": 2973,
+          "sha256": "823032fb4d5cb70c7b1d129da007cdc304b1f9ccf5fe148e8a5e14994316566a"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/ncbi_dataset/data/dataset_catalog.json",
+          "role": "ncbi_dataset_catalog",
+          "size_bytes": 704,
+          "sha256": "8f2acc25d19f870b86bb279ccabbfaf63d6c85c0afbda953a37fa50f2d1b3e89"
+        },
+        {
+          "path": "data/genomes/GCF_000010465.1/ncbi_datasets.zip",
+          "role": "original_ncbi_datasets_zip",
+          "size_bytes": 1099310,
+          "sha256": "d3fae2d8b8e5e072eac978aa18b9b91ea611a9dae90fb9824a2423c208d3c241"
+        }
+      ]
+    },
+    {
+      "accession": "GCF_000012685.1",
+      "organism": "Myxococcus xanthus DK 1622",
+      "tax_id": 246197,
+      "assembly_name": "ASM1268v1",
+      "assembly_level": "Complete Genome",
+      "sequence_count": 1,
+      "sequence_length_bp": 9139763,
+      "source_url": "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000012685.1/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=SEQUENCE_REPORT",
+      "assembly_record_url": "https://www.ncbi.nlm.nih.gov/assembly/GCF_000012685.1/",
+      "fetched_at_utc": "2026-10-18T01:22:31Z",
+      "fetch_date_utc": "2026-10-18",
+      "size_bytes": 9254070,
+      "sha256": "6d8566ddb54951dffcc39f4699b6c757a23a977742e95412fe33645ade1864b9",
+      "sequence_file": {
+        "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/GCF_000012685.1/GCF_000012685.1_ASM1268v1_genomic.fna",
+        "role": "genome_sequence_fasta",
+        "size_bytes": 9254070,
+        "sha256": "6d8566ddb54951dffcc39f4699b6c757a23a977742e95412fe33645ade1864b9"
+      },
+      "annotation_file": {
+        "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/GCF_000012685.1/genomic.gff",
+        "role": "genome_annotation_gff3",
+        "size_bytes": 4446178,
+        "sha256": "6f316a62a8e18e00ce9d4465ced2933d1cc7449654f91e5ccb7c96b961e3601a"
+      },
+      "source_package": {
+        "path": "data/genomes/GCF_000012685.1/ncbi_datasets.zip",
+        "role": "original_ncbi_datasets_zip",
+        "size_bytes": 3187687,
+        "sha256": "8ba6eb805e670a0589da0c714e0c411adce0d84a6324eb77f947d52fc13f16b1"
+      },
+      "license_or_terms": "NCBI states it places no restrictions on use or distribution of molecular data and does not accept submissions whose submitters request reuse/redistribution restrictions. However, original submitters (or a country of origin) may claim patent, copyright, or other IP rights in portions; NCBI does not assess such claims or transfer submitter rights. No separate per-assembly license field was supplied in this package. Do not interpret this as a blanket public-domain or CC0 grant; preserve accession attribution and review any record-specific submitter claim before redistribution.",
+      "terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/#data",
+      "additional_terms_reference": "https://www.ncbi.nlm.nih.gov/genbank/#datausage",
+      "artifacts": [
+        {
+          "path": "data/genomes/GCF_000012685.1/README.md",
+          "role": "ncbi_package_readme",
+          "size_bytes": 1593,
+          "sha256": "4b40504b9d718336b19ce451ff7e117494105e58e2351fee9563af7886320eec"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/md5sum.txt",
+          "role": "ncbi_md5_checksum_list",
+          "size_bytes": 428,
+          "sha256": "c4e3fa00810733d3683ee4f0d3cbdaabe8303a24846b7e2c671cbc343b30efc0"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/GCF_000012685.1/GCF_000012685.1_ASM1268v1_genomic.fna",
+          "role": "genome_sequence_fasta",
+          "size_bytes": 9254070,
+          "sha256": "6d8566ddb54951dffcc39f4699b6c757a23a977742e95412fe33645ade1864b9"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/GCF_000012685.1/genomic.gff",
+          "role": "genome_annotation_gff3",
+          "size_bytes": 4446178,
+          "sha256": "6f316a62a8e18e00ce9d4465ced2933d1cc7449654f91e5ccb7c96b961e3601a"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/GCF_000012685.1/sequence_report.jsonl",
+          "role": "sequence_metadata_jsonl",
+          "size_bytes": 315,
+          "sha256": "dbd0055c02b8e98ad73430daf50906877eff27c17f71c2e0261064f5ba21ecd8"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/assembly_data_report.jsonl",
+          "role": "assembly_metadata_jsonl",
+          "size_bytes": 2778,
+          "sha256": "68527bf0a6a8d9f38711e2ca0785d87550d20fd5bf12f08d4af1b3c2087b92c0"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/ncbi_dataset/data/dataset_catalog.json",
+          "role": "ncbi_dataset_catalog",
+          "size_bytes": 704,
+          "sha256": "6981e9ea775d274f3b3959670084a98fe3034aafb4f8325a74e2545cb89d7ef3"
+        },
+        {
+          "path": "data/genomes/GCF_000012685.1/ncbi_datasets.zip",
+          "role": "original_ncbi_datasets_zip",
+          "size_bytes": 3187687,
+          "sha256": "8ba6eb805e670a0589da0c714e0c411adce0d84a6324eb77f947d52fc13f16b1"
+        }
+      ]
+    }
+  ]
+}

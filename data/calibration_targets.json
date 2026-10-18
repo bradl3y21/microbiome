@@ -1,0 +1,880 @@
+{
+  "schema_version": 1,
+  "description": "Published single-organism measurements the realism layer is calibrated and validated against. Every value was read from the cited source text while this file was written; DOIs were resolved against Crossref on 2026-10-18. 'evidence' is a short extract of what was read: verbatim text, or a transcription of the table row (ellipses mark omissions; plus-minus is written +/-).",
+  "roles": {
+    "fit": "a model parameter is solved so the simulation reproduces this number; it is NOT independent evidence that the model is right",
+    "held_out": "not used in any fit; the simulation is compared with it afterwards, so a match is a genuine (if weak) validation",
+    "range": "a published range the model parameter must lie inside",
+    "assumed": "a parameter with no direct measurement in this file; the value and reason are stated",
+    "reference": "recorded for context; the model deliberately does not reproduce it, with the reason stated"
+  },
+  "sources": {
+    "Jain2009": {
+      "citation": "Jain R, Srivastava R. Metabolic investigation of host/pathogen interaction using MS2-infected Escherichia coli. BMC Syst Biol 3:121 (2009)",
+      "doi": "10.1186/1752-0509-3-121",
+      "read_via": "BioNumbers BNID 109689"
+    },
+    "Tannler2008": {
+      "citation": "Tannler S, Decasper S, Sauer U. Maintenance metabolism and carbon fluxes in Bacillus species. Microb Cell Fact 7:19 (2008)",
+      "doi": "10.1186/1475-2859-7-19",
+      "read_via": "PMC2442585 full text (Tables 2 and 3)"
+    },
+    "Senn1994": {
+      "citation": "Senn H, Lendenmann U, Snozzi M, Hamer G, Egli T. The growth of Escherichia coli in glucose-limited chemostat cultures: a re-examination of the kinetics. Biochim Biophys Acta 1201:424-436 (1994)",
+      "doi": "10.1016/0304-4165(94)90072-8",
+      "read_via": "PubMed 7803473 abstract; BioNumbers BNID 111049"
+    },
+    "Kayser2005": {
+      "citation": "Kayser A, Weber J, Hecht V, Rinas U. Metabolic flux analysis of Escherichia coli in glucose-limited continuous culture. I. Growth-rate-dependent metabolic efficiency at steady state. Microbiology 151:693-706 (2005)",
+      "doi": "10.1099/mic.0.27481-0",
+      "read_via": "BioNumbers BNID 113371"
+    },
+    "Basan2015": {
+      "citation": "Basan M, et al. Overflow metabolism in Escherichia coli results from efficient proteome allocation. Nature 528:99-104 (2015)",
+      "doi": "10.1038/nature15765",
+      "read_via": "PMC4843128 full text"
+    },
+    "Natarajan1999": {
+      "citation": "Natarajan A, Srienc F. Dynamics of glucose uptake by single Escherichia coli cells. Metab Eng 1:320-333 (1999)",
+      "doi": "10.1006/mben.1999.0125",
+      "read_via": "PubMed 10937825 abstract"
+    },
+    "BergBrown1972": {
+      "citation": "Berg HC, Brown DA. Chemotaxis in Escherichia coli analysed by three-dimensional tracking. Nature 239:500-504 (1972)",
+      "doi": "10.1038/239500a0",
+      "read_via": "quoted values in PLoS ONE 2019 (PMC6941824) and Nat Commun 2015 (PMC4659942); the 1972 paper itself was not read"
+    },
+    "Taute2015": {
+      "citation": "Taute KM, Gude S, Tans SJ, Shimizu TS. High-throughput 3D tracking of bacteria on a standard phase contrast microscope. Nat Commun 6:8776 (2015)",
+      "doi": "10.1038/ncomms9776",
+      "read_via": "PMC4659942 full text"
+    },
+    "AhmedStocker2008": {
+      "citation": "Ahmed T, Stocker R. Experimental verification of the behavioral foundation of bacterial transport parameters using microfluidics. Biophys J 95:4481-4493 (2008)",
+      "doi": "10.1529/biophysj.108.134510",
+      "read_via": "PubMed 18658218 abstract and PMC2567943"
+    },
+    "Rusconi2014": {
+      "citation": "Rusconi R, Garren M, Stocker R. Microfluidics expanding the frontiers of microbial ecology. Annu Rev Biophys 43:65-91 (2014)",
+      "doi": "10.1146/annurev-biophys-051013-022916",
+      "read_via": "PMC4076152 full text"
+    },
+    "Partridge2020": {
+      "citation": "Partridge JD, Nhu NTQ, Dufour YS, Harshey RM. Tumble suppression is a conserved feature of swarming motility. mBio 11:e01189-20 (2020)",
+      "doi": "10.1128/mbio.01189-20",
+      "read_via": "PMC7298715 full text"
+    },
+    "Neidhardt1996": {
+      "citation": "Neidhardt FC, Umbarger HE. Chemical composition of Escherichia coli. In: Escherichia coli and Salmonella: Cellular and Molecular Biology, 2nd ed., ASM Press (1996), ch. 3",
+      "doi": null,
+      "read_via": "BioNumbers BNID 103904"
+    },
+    "BremerDennis1987": {
+      "citation": "Bremer H, Dennis PP. Modulation of chemical composition and other parameters of the cell by growth rate. In: Escherichia coli and Salmonella typhimurium, 1st ed., ASM Press (1987), ch. 96, Table 2",
+      "doi": null,
+      "read_via": "BioNumbers BNID 103891 and the BioNumbers book chapter 'How big is an E. coli cell and what is its mass?'"
+    },
+    "Feist2007": {
+      "citation": "Feist AM, et al. A genome-scale metabolic reconstruction for Escherichia coli K-12 MG1655 that accounts for 1260 ORFs and thermodynamic information. Mol Syst Biol 3:121 (2007)",
+      "doi": "10.1038/msb4100155",
+      "read_via": "BioNumbers BNID 110421"
+    },
+    "Lee2012": {
+      "citation": "Lee H, Popodi E, Tang H, Foster PL. Rate and molecular spectrum of spontaneous mutations in the bacterium Escherichia coli as determined by whole-genome sequencing. PNAS 109:E2774-E2783 (2012)",
+      "doi": "10.1073/pnas.1210309109",
+      "read_via": "PMC3478608 text"
+    },
+    "Foster2015": {
+      "citation": "Foster PL, Lee H, Popodi E, Townes JP, Tang H. Determinants of spontaneous mutation in the bacterium Escherichia coli as revealed by whole-genome sequencing. PNAS 112:E5990-E5999 (2015)",
+      "doi": "10.1073/pnas.1512136112",
+      "read_via": "PMC4640725 abstract"
+    },
+    "Driks2002": {
+      "citation": "Overview: Development in bacteria: spore formation in Bacillus subtilis. PubMed 11964116 (2002); authors, journal and DOI were not recorded",
+      "doi": null,
+      "read_via": "PubMed 11964116 abstract"
+    },
+    "HoberDaniels": {
+      "citation": "Hober R (1967) Physical Chemistry of Cells and Tissues; Daniels F, Alberty RA (1961) Physical Chemistry. Table of diffusion coefficients in water",
+      "doi": null,
+      "read_via": "BioNumbers BNID 104086"
+    },
+    "StDenisFell1971": {
+      "citation": "St-Denis CE, Fell CJD. Diffusivity of oxygen in water. Can J Chem Eng 49:885 (1971); quoted by Kihara S, Hartzler DA, Savikhin S. Biophys J 106:1882-1889 (2014)",
+      "doi": "10.1016/j.bpj.2014.03.031",
+      "read_via": "BioNumbers BNID 114984"
+    },
+    "Berger2014": {
+      "citation": "Berger A, Dohnt K, Tielen P, Jahn D, Becker J, Wittmann C. P. aeruginosa PAO1 aerobic growth on glucose, 13C flux study. PLoS ONE 9(2):e88368 (2014)",
+      "doi": "10.1371/journal.pone.0088368",
+      "read_via": "full text, PMC3977821 (Table 1)"
+    },
+    "Dolan2020": {
+      "citation": "Dolan SK, Kohlstedt M, Trigg S, Vallejo Ramirez P, Kaminski CF, Wittmann C, Welch M. mBio 11(2):e02684-19 (2020)",
+      "doi": "10.1128/mBio.02684-19",
+      "read_via": "full text, PMC7078475"
+    },
+    "Tian2022": {
+      "citation": "Tian M, Wu Z, Zhang R, Yuan J. A new mode of swimming in singly flagellated Pseudomonas aeruginosa. PNAS 119(14):e2120508119 (2022)",
+      "doi": "10.1073/pnas.2120508119",
+      "read_via": "full text, PMC9168846"
+    },
+    "Diggle2020": {
+      "citation": "Diggle SP, Whiteley M. Microbe Profile: Pseudomonas aeruginosa: opportunistic pathogen and lab rat. Microbiology 166:30-33 (2020)",
+      "doi": "10.1099/mic.0.000860",
+      "read_via": "full text, PMC7273324 (a species-level statement, not a PAO1 measurement)"
+    },
+    "Ferreira2013": {
+      "citation": "Ferreira MT, Manso AS, et al. Effect of Oxygen on Glucose Metabolism: Utilization of Lactate in Staphylococcus aureus as Revealed by In Vivo NMR Studies. PLoS ONE 8(3):e58277 (2013)",
+      "doi": "10.1371/journal.pone.0058277",
+      "read_via": "full text, PMC3589339 (strain COL-S, defined medium, 65 mM glucose)"
+    },
+    "Monteiro2015": {
+      "citation": "Monteiro JM, Fernandes PB, et al. Cell shape dynamics during the staphylococcal cell cycle. Nat Commun 6:8055 (2015)",
+      "doi": "10.1038/ncomms9055",
+      "read_via": "full text, PMC4557339"
+    },
+    "Zhang2020": {
+      "citation": "Zhang W, Wang Y, et al. Dynamics of Solitary Predation by Myxococcus xanthus on Escherichia coli Observed at the Single-Cell Level. Appl Environ Microbiol 86:e02286-19 (2020)",
+      "doi": "10.1128/AEM.02286-19",
+      "read_via": "full text, PMC6974655 (DK1622 on TPM agar)"
+    },
+    "Sliusarenko2007": {
+      "citation": "Sliusarenko O, Zusman DR, Oster G. Aggregation during Fruiting Body Formation in Myxococcus xanthus Is Driven by Reducing Cell Movement. J Bacteriol 189:611-619 (2007)",
+      "doi": "10.1128/jb.01206-06",
+      "read_via": "full text, PMC1797407 (Table 1, DK1622)"
+    },
+    "KaiserWelch2004": {
+      "citation": "Kaiser D, Welch R. Dynamics of Fruiting Body Morphogenesis. J Bacteriol 186:919-927 (2004)",
+      "doi": "10.1128/JB.186.4.919-927.2004",
+      "read_via": "full text, PMC344202"
+    },
+    "Kaimer2023": {
+      "citation": "Kaimer C, Weltzer ML, et al. Two reasons to kill: predation and kin discrimination in myxobacteria. Microbiology 169(7):001372 (2023)",
+      "doi": "10.1099/mic.0.001372",
+      "read_via": "full text, PMC10433427 (a review sentence citing primary studies that were not read)"
+    },
+    "Yang2019": {
+      "citation": "Yang Y-J, Singh RP, et al. Microb Cell Fact 18:123 (2019)",
+      "doi": "10.1186/s12934-019-1172-3",
+      "read_via": "full text, PMC6617876 (DK1622, CTT, 30 C)"
+    },
+    "Konovalova2010": {
+      "citation": "Konovalova A, Petters T, Sogaard-Andersen L. Extracellular biology of Myxococcus xanthus. FEMS Microbiol Rev 34:89-106 (2010)",
+      "doi": "10.1111/j.1574-6976.2009.00194.x",
+      "read_via": "a search-result excerpt only (the publisher page returned HTTP 403)"
+    },
+    "MendesSoares2013": {
+      "citation": "Mendes-Soares H, Velicer GJ. Decomposing predation: testing for parameters that correlate with predatory performance by a social bacterium. Microb Ecol 65:415-423 (2013)",
+      "doi": "10.1007/s00248-012-0135-6",
+      "read_via": "full text, PMC3563865 (Table 3; predator GJV2, a rifampicin-resistant derivative of a DK1622 isolate; mixed lawns on TPM agar, 32 C)"
+    }
+  },
+  "targets": [
+    {
+      "id": "ecoli.growth_rate.glucose_M9",
+      "organism": "GCF_000005845.2",
+      "quantity": "specific growth rate, glucose M9, aerobic batch",
+      "value": 0.65,
+      "sd": 0.02,
+      "unit": "1/h",
+      "role": "fit",
+      "fits": "biomass_scale",
+      "source": "Jain2009",
+      "strain_note": "strain named C-3000 by the source",
+      "evidence": "The growth rate of the uninfected Escherichia coli C-3000 in minimal M9 media was found to be 0.65 +/- 0.02 h^-1 (n = 5)."
+    },
+    {
+      "id": "ecoli.q_glucose.glucose_M9",
+      "organism": "GCF_000005845.2",
+      "quantity": "specific glucose uptake rate",
+      "value": 12.0,
+      "sd": 0.5,
+      "unit": "mmol/gDW/h",
+      "role": "fit",
+      "fits": "uptake_scale",
+      "source": "Jain2009",
+      "evidence": "The glucose uptake rate of the uninfected cells was 12 +/- 0.5 mmol/(g DW h) (n = 3)"
+    },
+    {
+      "id": "ecoli.q_oxygen.glucose_M9",
+      "organism": "GCF_000005845.2",
+      "quantity": "specific oxygen uptake rate",
+      "value": 27.0,
+      "sd": 1.0,
+      "unit": "mmol/gDW/h",
+      "role": "fit",
+      "fits": "overflow_scale",
+      "source": "Jain2009",
+      "evidence": "and the oxygen uptake rate was 27 +/- 1 mmol/(g DW h) (n = 2)",
+      "note": "With growth and glucose uptake fixed, oxygen use fixes the fraction of respired carbon that is not fully oxidised (excreted as acetate); the acetate itself was not reported in the source, so it is inferred, not measured."
+    },
+    {
+      "id": "ecoli.dry_mass.mean_at_mu_0.65",
+      "organism": "GCF_000005845.2",
+      "quantity": "mean dry mass per cell at the growth rate above",
+      "value": 188.0,
+      "sd": 20.0,
+      "unit": "fg",
+      "role": "fit",
+      "fits": "division_mass_scale",
+      "source": "Neidhardt1996",
+      "also": [
+        "BremerDennis1987"
+      ],
+      "derived": true,
+      "derivation": "Published points: 280 fg at a 40 min mass doubling (Neidhardt 1996), 148 fg at 100 min and 865 fg at 24 min (Dennis and Bremer, as tabulated by BioNumbers). ln(mass) is linear in growth rate (Schaechter et al. 1958, the 'growth law'); interpolating between the 100 and 40 min points to mu = 0.65/h (64 min) gives about 188 fg for an average cell of E. coli B/r. The SD is an allowance for strain differences (B/r versus the strain above), not a reported error. Mean mass of a steadily growing population = 2 ln2 x birth mass, so division mass = 1.443 x mean = about 271 fg.",
+      "evidence": "The total dry weight per cell is 2.8e-13 g (40 min doubling); average value of 148 fg for cells dividing every 100 minutes to 865 fg for those with a 24 minute division time"
+    },
+    {
+      "id": "ecoli.Ks.glucose",
+      "organism": "GCF_000005845.2",
+      "quantity": "glucose concentration at half the maximum growth rate (Monod Ks)",
+      "range": [
+        0.00022,
+        0.55
+      ],
+      "unit": "mmol/L",
+      "role": "range",
+      "constrains": "half_saturation_mmol_l[glucose]",
+      "source": "Senn1994",
+      "also": [
+        "Natarajan1999"
+      ],
+      "evidence": "Ks ... in the range of 40-88 micrograms.l-1 ... large differences in Ks constants reported in the literature (ranging from 40 micrograms.l-1 up to 99 mg.l-1) are due to the use of E. coli cells adapted to different degrees",
+      "note": "40 ug/L = 0.22 uM and 99 mg/L = 550 uM (glucose 180.16 g/mol). Adapted cells sit at the low end. The model value is the geometric middle of the range. The single-cell analogue (2-NBDG) transport constant was 1.75 uM (Natarajan and Srienc 1999)."
+    },
+    {
+      "id": "ecoli.acetate.none_below_D_0.3",
+      "organism": "GCF_000005845.2",
+      "quantity": "acetate excretion in glucose-limited chemostat growth below a dilution rate of 0.3/h",
+      "value": 0.0,
+      "unit": "(not observed)",
+      "role": "held_out",
+      "tested_as": "acetate carbon fraction at mu = 0.3/h is below 0.02",
+      "source": "Kayser2005",
+      "evidence": "At dilution rates below 0.3 h^-1, ... acetate formation was not observed"
+    },
+    {
+      "id": "ecoli.acetate.batch_threshold",
+      "organism": "GCF_000005845.2",
+      "quantity": "growth rate above which acetate is excreted in batch growth (threshold-linear)",
+      "value": 0.76,
+      "unit": "1/h",
+      "role": "reference",
+      "source": "Basan2015",
+      "evidence": "a linear dependence above a characteristic growth rate (lambda_ac approx 0.76 h-1, or 55 min per doubling), below which acetate excretion disappears",
+      "note": "NOT reproduced. The model's overflow depends on sugar saturation, not on growth rate, and the strain and medium here (NCM3722, MOPS) differ from the oxygen and glucose-uptake data used for the fit (C-3000, M9), which imply acetate at 0.65/h."
+    },
+    {
+      "id": "ecoli.maintenance",
+      "organism": "GCF_000005845.2",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "value": 0.37,
+      "range": [
+        0.32,
+        0.42
+      ],
+      "unit": "mmol glucose/gDW/h",
+      "role": "assumed",
+      "fits": "maintenance_mmol_glc_gdw_h",
+      "source": "Feist2007",
+      "derived": true,
+      "derivation": "8.39 mmol ATP/gDW/h (NGAM fitted to aerobic chemostat data in the iAF1260 reconstruction) divided by an ASSUMED 20-26 ATP per glucose respired = 0.32-0.42 mmol glucose/gDW/h; the midpoint is used. The ATP-per-glucose figure is an assumption (not read from a source).",
+      "evidence": "an NGAM value of 8.39 mmolATP/gDW/h and a GAM value of 59.81 mmolATP/gDW best fit the experimental data"
+    },
+    {
+      "id": "ecoli.swim_speed",
+      "organism": "GCF_000005845.2",
+      "quantity": "mean swimming speed in liquid",
+      "value": 30.0,
+      "sd": 8.0,
+      "unit": "um/s",
+      "role": "fit",
+      "fits": "swim_speed_scale",
+      "source": "AhmedStocker2008",
+      "also": [
+        "Taute2015",
+        "BergBrown1972",
+        "Partridge2020"
+      ],
+      "note": "Reported means: 14 (Berg and Brown 1972), 21 (liquid, cited in Partridge 2020), 29.8 +/- 2.7 (2D, Ahmed and Stocker 2008), 40 (Taute 2015). 30 +/- 8 spans the three modern values; the 1972 value is the outlier.",
+      "evidence": "The mean 2D swimming velocity was v2D = 29.8 +/- 2.7 um/s ... average swimming speed of 40 um s^-1 than the previously reported 14 um s^-1"
+    },
+    {
+      "id": "ecoli.run_time",
+      "organism": "GCF_000005845.2",
+      "quantity": "mean run duration with no gradient (strain AW405, the strain Berg and Brown used)",
+      "value": 0.64,
+      "unit": "s",
+      "role": "fit",
+      "fits": "tumble_rate_per_s = 1/run_time",
+      "source": "Taute2015",
+      "evidence": "approximately exponentially distributed run and tumble durations ... characteristic time scales 0.64 s and 0.19 s, respectively"
+    },
+    {
+      "id": "ecoli.tumble_time",
+      "organism": "GCF_000005845.2",
+      "quantity": "mean tumble duration",
+      "value": 0.19,
+      "unit": "s",
+      "role": "reference",
+      "source": "Taute2015",
+      "evidence": "0.64 s and 0.19 s, respectively",
+      "note": "Not modelled: a tumble is an instantaneous reorientation. Cells therefore spend all their time running, so the simulated mean speed is about 30% higher than the same cell would show in a tracking experiment."
+    },
+    {
+      "id": "ecoli.tumble_angle",
+      "organism": "GCF_000005845.2",
+      "quantity": "mean reorientation at a tumble",
+      "value": 62.5,
+      "sd": 6.0,
+      "unit": "deg",
+      "role": "fit",
+      "fits": "tumble_angle_mean_deg",
+      "source": "BergBrown1972",
+      "also": [
+        "Taute2015"
+      ],
+      "note": "68 +/- 36 degrees (Berg and Brown 1972, quoted) and a population mean of 57 degrees (Taute 2015, same strain); the midpoint is used. The 36 degree spread is applied to the distribution.",
+      "evidence": "<theta_tumble> = (68 +/- 36) degrees ... For the turning angles, we find a population mean of 57 degrees, smaller than the 68 degrees previously reported"
+    },
+    {
+      "id": "ecoli.tumble_angle_sd",
+      "organism": "GCF_000005845.2",
+      "quantity": "spread of the reorientation angle",
+      "value": 36.0,
+      "unit": "deg",
+      "role": "fit",
+      "fits": "tumble_angle_sd_deg",
+      "source": "BergBrown1972",
+      "evidence": "68 +/- 36 degrees"
+    },
+    {
+      "id": "ecoli.random_motility",
+      "organism": "GCF_000005845.2",
+      "quantity": "random motility coefficient (3D effective diffusivity of the swimming population)",
+      "value": 330.0,
+      "sd": 80.0,
+      "unit": "um^2/s",
+      "role": "held_out",
+      "source": "AhmedStocker2008",
+      "evidence": "random motility mu [(3.3 +/- 0.8) x 10(-6) cm(2) s(-1)]",
+      "note": "3.3e-6 cm^2/s = 330 um^2/s. The simulation is 2D; the matching 3D value for the same single-cell kinetics is 2/3 of the 2D MSD diffusivity (D3 = v^2 tau / (3(1-alpha)) against D2 = v^2 tau / (2(1-alpha)))."
+    },
+    {
+      "id": "ecoli.chemotactic_velocity",
+      "organism": "GCF_000005845.2",
+      "quantity": "maximum up-gradient drift as a fraction of swimming speed",
+      "range": [
+        0.15,
+        0.35
+      ],
+      "value": 0.3,
+      "unit": "fraction of v",
+      "role": "fit",
+      "fits": "chemotaxis_gain",
+      "source": "Rusconi2014",
+      "also": [
+        "AhmedStocker2008"
+      ],
+      "evidence": "E. coli can achieve chemotactic velocities as high as 35% of their swimming speed (more than double the typical literature values of 15%)",
+      "note": "The best published case is 35% and the typical value 15%. The gain is fitted so the largest drift over a scan of gradient steepness is 30%, a choice inside that range."
+    },
+    {
+      "id": "bsub.growth_rate.glucose_M9",
+      "organism": "GCF_000009045.1",
+      "quantity": "specific growth rate, glucose M9, aerobic batch",
+      "value": 0.67,
+      "sd": 0.02,
+      "unit": "1/h",
+      "role": "fit",
+      "fits": "biomass_scale",
+      "source": "Tannler2008",
+      "evidence": "Table 2, B. subtilis wild type: growth rate 0.67 +/- 0.02 1/h; yield 0.44 +/- 0.03 gCDW/gglc; glucose consumption 8.71 +/- 0.64 and acetate production 4.28 +/- 0.29 mmol/g/h"
+    },
+    {
+      "id": "bsub.q_glucose.glucose_M9",
+      "organism": "GCF_000009045.1",
+      "quantity": "specific glucose uptake rate",
+      "value": 8.71,
+      "sd": 0.64,
+      "unit": "mmol/gDW/h",
+      "role": "fit",
+      "fits": "uptake_scale",
+      "source": "Tannler2008",
+      "evidence": "8.71 +/- 0.64 (Table 2)"
+    },
+    {
+      "id": "bsub.q_acetate.glucose_M9",
+      "organism": "GCF_000009045.1",
+      "quantity": "specific acetate production rate",
+      "value": 4.28,
+      "sd": 0.29,
+      "unit": "mmol/gDW/h",
+      "role": "fit",
+      "fits": "overflow_scale",
+      "source": "Tannler2008",
+      "evidence": "4.28 +/- 0.29 (Table 2)"
+    },
+    {
+      "id": "bsub.yield.glucose_M9",
+      "organism": "GCF_000009045.1",
+      "quantity": "biomass yield on glucose",
+      "value": 0.44,
+      "sd": 0.03,
+      "unit": "gDW/g glucose",
+      "role": "held_out",
+      "source": "Tannler2008",
+      "evidence": "Yield 0.44 +/- 0.03 gCDW/gglc",
+      "note": "Not independent in the arithmetic sense (it equals growth rate / (uptake x 0.18016)), but it is not used in the fit, so it checks that the fitted growth and uptake agree with the measured yield."
+    },
+    {
+      "id": "bsub.maintenance",
+      "organism": "GCF_000009045.1",
+      "quantity": "maintenance energy coefficient (Pirt intercept of glucose uptake against dilution rate)",
+      "value": 0.39,
+      "sd": 0.08,
+      "unit": "mmol glucose/gDW/h",
+      "role": "fit",
+      "fits": "maintenance_mmol_glc_gdw_h",
+      "source": "Tannler2008",
+      "evidence": "The determined coefficient of 0.39 mmol g(cdw)-1 h-1 for B. subtilis wild type 168 (Table 3: 0.39 +/- 0.08)"
+    },
+    {
+      "id": "bsub.maintenance.chemostat_check",
+      "organism": "GCF_000009045.1",
+      "quantity": "Pirt relation reproduced: uptake rate q = mu/Y + m over dilution rates 0.05-0.4/h",
+      "value": 0.39,
+      "sd": 0.08,
+      "unit": "mmol glucose/gDW/h",
+      "role": "held_out",
+      "source": "Tannler2008",
+      "evidence": "q_glc = mu / Y_glc_max + m_glc",
+      "note": "Tests that the simulated slowly-growing culture follows the Pirt line and has the measured intercept; the intercept is a fit target above, so the new information here is only that the mechanism behaves linearly across rates."
+    },
+    {
+      "id": "bsub.swim_speed",
+      "organism": "GCF_000009045.1",
+      "quantity": "mean swimming (running) speed in liquid",
+      "value": 18.6,
+      "unit": "um/s",
+      "role": "fit",
+      "fits": "motility_scale",
+      "source": "Partridge2020",
+      "evidence": "running speeds (micrometers per second) ... B. subtilis, 18.6 to 31 (liquid to swarm)"
+    },
+    {
+      "id": "bsub.dry_mass",
+      "organism": "GCF_000009045.1",
+      "quantity": "cell dry mass",
+      "value": null,
+      "unit": "fg",
+      "role": "assumed",
+      "source": null,
+      "note": "No per-cell dry mass for B. subtilis was found. The D2 division mass (0.6 pg) is kept; it gives rods 2.2 um long at birth and 4.2 um at division, inside the 2-6 um range described for the species (Microbe Profile: Bacillus subtilis, PMC7376258)."
+    },
+    {
+      "id": "mutation.snv_rate",
+      "organism": "GCF_000005845.2",
+      "quantity": "base-pair substitution rate per nucleotide per generation",
+      "value": 2.2e-10,
+      "range": [
+        1.88e-10,
+        3e-10
+      ],
+      "unit": "1/nt/generation",
+      "role": "range",
+      "constrains": "D4 mutation rate (frozen at 2e-10)",
+      "source": "Lee2012",
+      "also": [
+        "Foster2015"
+      ],
+      "evidence": "the best estimate of the spontaneous mutation rate is the midpoint of these limits, 2.2 x 10-10 mutations per nucleotide per generation; The rate of BPSs is 2-3 x 10-10 mutations per nucleotide per generation (three strains)"
+    },
+    {
+      "id": "bsub.sporulation_time",
+      "organism": "GCF_000009045.1",
+      "quantity": "time for a cell to complete sporulation",
+      "value": 28800.0,
+      "range": [
+        28800.0,
+        36000.0
+      ],
+      "unit": "s",
+      "role": "range",
+      "constrains": "sporulation_time_s",
+      "source": "Driks2002",
+      "evidence": "Construction of a spore initiates in response to starvation, takes each cell about 8 h",
+      "note": "Another study (J Bacteriol 2014, doi 10.1128/jb.01993-14) says 8 to 10 h; its text was seen only as a search snippet."
+    },
+    {
+      "id": "diffusion.glucose",
+      "organism": null,
+      "quantity": "diffusion coefficient of glucose in water, 20 C",
+      "value": 600.0,
+      "unit": "um^2/s",
+      "role": "range",
+      "range": [
+        540.0,
+        660.0
+      ],
+      "constrains": "field diffusivity of glucose",
+      "source": "HoberDaniels",
+      "evidence": "Glucose 180 20 0.6 (x1e-5 cm^2/s)"
+    },
+    {
+      "id": "diffusion.lactose",
+      "organism": null,
+      "quantity": "diffusion coefficient of lactose in water, 20 C",
+      "value": 430.0,
+      "unit": "um^2/s",
+      "role": "range",
+      "range": [
+        390.0,
+        470.0
+      ],
+      "constrains": "field diffusivity of lactose",
+      "source": "HoberDaniels",
+      "evidence": "Lactose 342 20 0.43 (x1e-5 cm^2/s)"
+    },
+    {
+      "id": "diffusion.oxygen",
+      "organism": null,
+      "quantity": "diffusion coefficient of oxygen in water, room temperature",
+      "value": 2000.0,
+      "unit": "um^2/s",
+      "role": "reference",
+      "source": "StDenisFell1971",
+      "evidence": "D = 2.0 x 10^-9 m^2/s at room temperature",
+      "note": "The model uses 1400 um^2/s: the explicit diffusion scheme on the 10 um grid is unstable above about 1500 um^2/s at the fixed 1/60 s step, so oxygen (and acetate, 1100) are capped. Oxygen is therefore about 30% too slow."
+    },
+    {
+      "id": "pa.growth_rate.glucose",
+      "organism": "GCF_000006765.1",
+      "quantity": "specific growth rate, glucose, aerobic batch",
+      "unit": "1/h",
+      "value": 0.91,
+      "sd": 0.02,
+      "role": "fit",
+      "fits": "biomass_scale",
+      "source": "Berger2014",
+      "strain_note": "PAO1, defined glucose medium, 37 C, aerobic shake flask",
+      "evidence": "PAO1 0.91+/-0.02 (maximum specific growth rate, h-1), 0.53+/-0.01 (biomass yield g CDW per g glucose), 9.52+/-0.21 (glucose uptake rate, mmol g CDW-1 h-1)"
+    },
+    {
+      "id": "pa.q_glucose.glucose",
+      "organism": "GCF_000006765.1",
+      "quantity": "specific glucose uptake rate, aerobic batch",
+      "unit": "mmol/gDW/h",
+      "value": 9.52,
+      "sd": 0.21,
+      "role": "fit",
+      "fits": "uptake_scale",
+      "source": "Berger2014",
+      "strain_note": "the same table row as the growth rate",
+      "evidence": "PAO1 0.91+/-0.02 (maximum specific growth rate, h-1), 0.53+/-0.01 (biomass yield g CDW per g glucose), 9.52+/-0.21 (glucose uptake rate, mmol g CDW-1 h-1)"
+    },
+    {
+      "id": "pa.growth_rate.glucose_dolan",
+      "organism": "GCF_000006765.1",
+      "quantity": "specific growth rate in a second laboratory (MOPS, 15 mM glucose)",
+      "unit": "1/h",
+      "value": 0.88,
+      "sd": 0.05,
+      "role": "held_out",
+      "source": "Dolan2020",
+      "strain_note": "PAO1, MOPS 15 mM glucose, 37 C, 250 rpm",
+      "evidence": "P. aeruginosa grew more slowly in glycerol (mu max growth rate = 0.37 +/- 0.01 h-1) than in acetate (mu max = 0.80 +/- 0.01 h-1), glucose (mu max = 0.88 +/- 0.05 h-1), or succinate (mu max = 0.87 +/- 0.05 h-1)"
+    },
+    {
+      "id": "pa.swim_speed",
+      "organism": "GCF_000006765.1",
+      "quantity": "swimming speed during runs (mean of pull and push modes)",
+      "unit": "um/s",
+      "value": 37.7,
+      "sd": 0.8,
+      "role": "fit",
+      "fits": "motility_scale",
+      "source": "Tian2022",
+      "derived": true,
+      "strain_note": "PAO1 fliC(T394C) labelling mutant grown in LB, observed in motility buffer in a 3.5 um film near a coverslip; not glucose-grown",
+      "derivation": "mean of the quoted pull (37.95 +/- 0.79 um/s) and push (37.42 +/- 0.80 um/s) swimming speeds of the same cells; the uncertainty is the mean of the two quoted standard errors",
+      "evidence": "the mean swimming velocity was 14.45 +/- 0.49 um/s, much smaller than the swimming velocities during the pull mode of 37.95 +/- 0.79 um/s and during the push mode of 37.42 +/- 0.80 um/s"
+    },
+    {
+      "id": "pa.run_reverse",
+      "organism": "GCF_000006765.1",
+      "quantity": "mean run duration before a reversal (pull and push modes)",
+      "unit": "s",
+      "value": 2.18,
+      "role": "fit",
+      "source": "Tian2022",
+      "evidence": "the mean duration of the wrap mode was 0.95 +/- 0.06 s (mean +/- SEM), whereas the pull and push mode exhibited longer duration of 2.21 +/- 0.08 and 2.14 +/- 0.08 s, respectively. Ninety percent of the turn angles for pull -> push transitions were distributed over 150 to 180 degrees.",
+      "fits": "run_time_s",
+      "sd": 0.08,
+      "derived": true,
+      "derivation": "mean of the quoted pull (2.21 +/- 0.08 s) and push (2.14 +/- 0.08 s) run durations: the time between reversals; the shorter wrap mode (0.95 s, 40 % of reversals) is not modelled",
+      "strain_note": "PAO1 fliC(T394C) labelling mutant grown in LB, observed near a coverslip; not glucose-grown"
+    },
+    {
+      "id": "pa.turn_angle",
+      "organism": "GCF_000006765.1",
+      "quantity": "reorientation angle at a pull-to-push reversal",
+      "unit": "degrees",
+      "value": 165.0,
+      "sd": 9.1,
+      "role": "fit",
+      "fits": "turn_mean_deg",
+      "source": "Tian2022",
+      "derived": true,
+      "derivation": "90 % of the turn angles were quoted as lying between 150 and 180 degrees: the midpoint is 165, and a normal distribution with 90 % inside +/-15 degrees has a standard deviation of 15 / 1.645 = 9.1 degrees (the normal shape is assumed)",
+      "strain_note": "PAO1 fliC(T394C), near a coverslip",
+      "evidence": "Ninety percent of the turn angles for pull -> push transitions were distributed over 150 to 180 degrees."
+    },
+    {
+      "id": "pa.width",
+      "organism": "GCF_000006765.1",
+      "quantity": "cell width",
+      "unit": "um",
+      "value": 0.75,
+      "range": [
+        0.5,
+        1.0
+      ],
+      "role": "range",
+      "source": "Diggle2020",
+      "note": "the model's rod width is the midpoint of the species range",
+      "evidence": "P. aeruginosa is a heterotrophic, motile, Gram-negative rod-shaped bacterium about 1-5 um long and 0.5-1.0 um wide."
+    },
+    {
+      "id": "pa.maintenance",
+      "organism": "GCF_000006765.1",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "value": 0.37,
+      "role": "assumed",
+      "source": null,
+      "note": "No P. aeruginosa maintenance coefficient was found. E. coli's assumed value is used so that cells can starve at all; it is a placeholder, not a property of this organism. The range is the one derived for E. coli (see ecoli.maintenance).",
+      "range": [
+        0.32,
+        0.42
+      ]
+    },
+    {
+      "id": "sa.growth_rate.glucose",
+      "organism": "GCF_000010465.1",
+      "quantity": "specific growth rate, defined glucose medium, aerobic",
+      "unit": "1/h",
+      "value": 1.05,
+      "sd": 0.08,
+      "role": "fit",
+      "fits": "biomass_scale",
+      "source": "Ferreira2013",
+      "strain_note": "strain COL-S (not Newman), 65 mM glucose, 37 C, 200 rpm, 1/5 flask filling",
+      "evidence": "mu max (h-1) 0.47+/-0.01 [anaerobic] 1.05+/-0.08 ... In the presence of oxygen, the maximal growth rate was about 1.1 h-1 (doubling time of 58 min)"
+    },
+    {
+      "id": "sa.q_glucose.glucose",
+      "organism": "GCF_000010465.1",
+      "quantity": "maximal specific glucose consumption rate, aerobic",
+      "unit": "mmol/gDW/h",
+      "value": 12.4,
+      "sd": 0.2,
+      "role": "fit",
+      "fits": "uptake_scale",
+      "source": "Ferreira2013",
+      "strain_note": "COL-S; a maximum at high glucose, reported at growth arrest",
+      "evidence": "At the time of growth arrest, 26% of the initial glucose had been consumed and the maximal consumption rate was 12.4 mmol g -1 h -1."
+    },
+    {
+      "id": "sa.division_volume",
+      "organism": "GCF_000010465.1",
+      "quantity": "cell volume at division (twice the newborn volume of 0.52 um^3)",
+      "unit": "um^3",
+      "value": 1.04,
+      "range": [
+        0.98,
+        1.1
+      ],
+      "role": "fit",
+      "fits": "division_mass_scale",
+      "source": "Monteiro2015",
+      "derived": true,
+      "derivation": "0.52 um^3 is quoted for a cell of ~1 um diameter; a diameter of 1.26 um doubles the volume, so a dividing cell is 1.04 um^3. The model converts mass to volume at its own 3.3 um^3/pg.",
+      "strain_note": "strain COL, labelled with Nile Red on agarose pads at room temperature",
+      "evidence": "S. aureus cells are ~1 um in diameter (or 0.52 um3 in volume). Approximating the cell shape to a sphere, an increase of the diameter to 1.26 um is sufficient to double the cell volume."
+    },
+    {
+      "id": "sa.maintenance",
+      "organism": "GCF_000010465.1",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "value": 0.37,
+      "role": "assumed",
+      "source": null,
+      "note": "No S. aureus maintenance coefficient was found. E. coli's assumed value is used as a placeholder. The range is the one derived for E. coli (see ecoli.maintenance).",
+      "range": [
+        0.32,
+        0.42
+      ]
+    },
+    {
+      "id": "sa.products",
+      "organism": "GCF_000010465.1",
+      "quantity": "acetate : lactate secretion ratio, aerobic",
+      "unit": "ratio",
+      "value": 2.0,
+      "role": "reference",
+      "source": "Ferreira2013",
+      "note": "Not reproduced: the model has no lactate output (lactate dehydrogenase only sets fermentation capacity). Acetate overflow is gene-derived and was not fitted for this organism.",
+      "evidence": "aerobically growing S. aureus secreted acetate and lactate to the medium in a proportion of 2:1"
+    },
+    {
+      "id": "mx.glide_speed",
+      "organism": "GCF_000012685.1",
+      "quantity": "gliding speed of a single cell (A-motility, no prey)",
+      "unit": "um/min",
+      "value": 2.3,
+      "sd": 1.1,
+      "role": "fit",
+      "fits": "motility_scale",
+      "source": "Zhang2020",
+      "strain_note": "DK1622 on TPM agar, single-cell tracking",
+      "evidence": "the average speed of 2.3 +/- 1.1 um/min obtained when there is no prey cell present"
+    },
+    {
+      "id": "mx.reversal_period",
+      "organism": "GCF_000012685.1",
+      "quantity": "mean time between reversals of a gliding cell",
+      "unit": "min",
+      "value": 7.5,
+      "sd": 3.0,
+      "role": "fit",
+      "fits": "reversal_rate_per_s",
+      "source": "Sliusarenko2007",
+      "strain_note": "DK1622, nutrient-free medium",
+      "evidence": "Wild type Outside 0.12 +/- 0.04 7.5 +/- 3 (Table 1: speed in um/s and reversal period in min)"
+    },
+    {
+      "id": "mx.cell_length",
+      "organism": "GCF_000012685.1",
+      "quantity": "mean cell length (5 to 7 um)",
+      "unit": "um",
+      "value": 6.0,
+      "range": [
+        5.0,
+        7.0
+      ],
+      "role": "fit",
+      "fits": "division_mass_scale",
+      "source": "KaiserWelch2004",
+      "derived": true,
+      "derivation": "the midpoint of the quoted range is taken as the mean length of a growing population; the width is 0.5 um",
+      "evidence": "Myxococcus cells, which are 5 to 7 um long and 0.5 um in diameter, glide over a surface, leaving behind a trail of slime"
+    },
+    {
+      "id": "mx.kill_time",
+      "organism": "GCF_000012685.1",
+      "quantity": "time from contact to prey death",
+      "unit": "s",
+      "value": 450.0,
+      "range": [
+        300.0,
+        600.0
+      ],
+      "role": "range",
+      "source": "Kaimer2023",
+      "note": "a review sentence ('within 5 to 10 min') that cites primary studies this work did not read; the model's mean kill time is 1 / (predation rate x capacity)",
+      "evidence": "a single Myxococcus xanthus cell approaches a prey cell using gliding motility, it stops when in direct cell contact and induces prey cell death within 5 to 10 min"
+    },
+    {
+      "id": "mx.maintenance",
+      "organism": "GCF_000012685.1",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "value": 0.37,
+      "role": "assumed",
+      "source": null,
+      "note": "No M. xanthus maintenance coefficient was found. E. coli's assumed value is used as a placeholder so that starved cells can start development. The range is the one derived for E. coli (see ecoli.maintenance).",
+      "range": [
+        0.32,
+        0.42
+      ]
+    },
+    {
+      "id": "mx.generation_time",
+      "organism": "GCF_000012685.1",
+      "quantity": "generation time in casitone medium, 30 C",
+      "unit": "h",
+      "value": 5.1,
+      "role": "reference",
+      "source": "Yang2019",
+      "note": "Not reproduced: M. xanthus does not grow on sugars (Bretscher and Kaiser 1978) and the model grows it only on prey. The rate of growth on prey was not found in the literature.",
+      "evidence": "In the absence of Cm, the mean generation time of strain DK1622 was 5.1 h."
+    },
+    {
+      "id": "mx.development",
+      "organism": "GCF_000012685.1",
+      "quantity": "time from starvation to first visible aggregates (13-14 h), to fruiting bodies (about 22 h), spore fraction (about 10 %)",
+      "unit": "h",
+      "value": 13.5,
+      "role": "reference",
+      "source": "Sliusarenko2007",
+      "note": "Not reproduced as timings: the model's development is starvation signalling plus the same sporulation machinery as B. subtilis (8 h). Whether cells aggregate is shown, not calibrated.",
+      "evidence": "it usually took 13 to 14 h for the first aggregates to become visible and an additional 8 h for the aggregates to form fruiting bodies. The fruiting bodies at 20 to 22 h contained fully motile rod-shaped cells that had not yet begun to sporulate."
+    },
+    {
+      "id": "mx.predator_growth",
+      "organism": "GCF_000012685.1",
+      "quantity": "predator growth rate among an excess of E. coli prey (no swarm expansion)",
+      "unit": "1/h",
+      "value": 0.183,
+      "role": "fit",
+      "fits": "predation_assimilation",
+      "source": "MendesSoares2013",
+      "strain_note": "GJV2 (a DK1622 derivative) on E. coli REL606 lawns on TPM agar at 32 C, about 1e4 predators among about 1e9 um^3 of prey",
+      "note": "Table 3 prints 0.183 without a unit or error; the slope of ln population size against hours over 24-60 h is taken as per hour. This is the only quantity found that links predator growth to prey, so it sets what share of a killed cell the predator takes up.",
+      "evidence": "Predator growth rate was calculated as the average slope of ln-transformed population size estimates over the 24-60 h. interval. [Table 3, row EC, column GR: 0.183 (3)]"
+    },
+    {
+      "id": "mx.dev_speed_outside",
+      "organism": "GCF_000012685.1",
+      "quantity": "gliding speed of a starved cell outside aggregates",
+      "unit": "um/s",
+      "value": 0.12,
+      "sd": 0.04,
+      "role": "fit",
+      "fits": "development_speed_factor",
+      "source": "Sliusarenko2007",
+      "strain_note": "DK1622 after the growth medium was replaced with medium lacking nutrients",
+      "note": "The model's factor is this speed over the growing cell's 2.3 um/min (0.0383 um/s, Zhang 2020): the two come from different experiments.",
+      "evidence": "Wild type Outside 0.12 +/- 0.04 7.5 +/- 3 / Wild type Inside 0.023 +/- 0.01 7.5 +/- 3"
+    },
+    {
+      "id": "mx.dev_speed_inside",
+      "organism": "GCF_000012685.1",
+      "quantity": "gliding speed of a starved cell inside an aggregate",
+      "unit": "um/s",
+      "value": 0.023,
+      "sd": 0.01,
+      "role": "fit",
+      "fits": "aggregate_speed_ratio",
+      "source": "Sliusarenko2007",
+      "strain_note": "DK1622, inside fruiting-body aggregates",
+      "note": "Inside and outside aggregates the quoted reversal period is the same (7.5 +/- 3 min), so the model does not suppress reversals.",
+      "evidence": "Wild type Outside 0.12 +/- 0.04 7.5 +/- 3 / Wild type Inside 0.023 +/- 0.01 7.5 +/- 3"
+    },
+    {
+      "id": "sa.clusters",
+      "organism": "GCF_000010465.1",
+      "quantity": "daughter cells stay attached and form grape-like clusters",
+      "unit": "qualitative",
+      "value": null,
+      "role": "assumed",
+      "source": null,
+      "note": "Reproduced as a mechanism (sister cells bonded until a random cut, alternating division planes) and checked by a test that clusters form and a control without bonds does not. The cut rate is an assumption. The attachment itself is read from the Missiakas and Schneewind 2013 review (cited in docs/ORGANISMS.md); no number was available to fit.",
+      "evidence": "All Staphylococci grow in clusters... Clustering is caused by the incomplete separation of daughter cells following division in three alternating perpendicular planes (Tzagoloff and Novick, 1977; Giesbrecht et al., 1998)."
+    }
+  ]
+}

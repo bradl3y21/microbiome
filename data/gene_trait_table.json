@@ -1,0 +1,1265 @@
+{
+  "schema_version": 1,
+  "table_revision": 3,
+  "title": "NCBI RefSeq annotated gene-to-trait map",
+  "change_log": [
+    {
+      "date": "2026-10-17",
+      "backlog_item": 21,
+      "correction": "Replaced mmol/s uptake values that implied sub-microsecond biomass doublings with per-cell channel rates derived from the table's explicit division-mass, division-hazard, biomass-fraction, and substrate molar-mass calibration. Removed the unsupported lacY-to-division-rate increment; ptsG is the sole division-rate proxy in this calibration.",
+      "previous_max_uptake_mmol_s": {
+        "GCF_000005845.2": {
+          "glucose": 0.00022,
+          "lactose": 0.00012
+        },
+        "GCF_000009045.1": {
+          "glucose": 0.00022,
+          "lactose": 2e-05
+        }
+      },
+      "corrected_max_uptake_mmol_s": {
+        "GCF_000005845.2": {
+          "glucose": 8.8809946714e-16,
+          "lactose": 4.67426234297e-16
+        },
+        "GCF_000009045.1": {
+          "glucose": 8.8809946714e-16,
+          "lactose": 0.0
+        }
+      },
+      "division_rate_s": {
+        "GCF_000005845.2": 0.0002,
+        "GCF_000009045.1": 0.0002
+      }
+    }
+  ],
+  "canonical_gene_key": "<assembly accession.version>|locus_tag:<locus_tag>; fallback: <assembly accession.version>|<seqid>:<start>-<end>:<strand>:<feature_type>",
+  "coordinates": "GFF3 1-based inclusive",
+  "feature_policy": "Only annotated gene/CDS features are read. No sequence-motif scanning, fuzzy product matching, transcript expression inference, or mutation is performed.",
+  "approximation_notice": "The listed gene annotations justify qualitative trait potential only. Numeric baselines/effects and bounds are explicit simulation calibration coefficients, not measured expression, uptake, growth, motility, division, or killing rates. Effects are summed in stable rule_id order and clamped to the explicit bounds. A multi-gene biosynthetic rule fires once only when all specified annotated CDS features exist. Uptake is calibrated per sole available carbon channel to the model division hazard; it is not a measured species-specific uptake capacity, and simultaneous saturated channels may sum above that single-channel calibration.",
+  "uptake_division_calibration": {
+    "status": "explicit internal simulation calibration; not an experimentally measured flux",
+    "uptake_scope": "per cell, per nutrient channel, in mmol/s; not a population-level rate",
+    "model_assumption": "For a single nutrient channel at its max uptake, biomass production is calibrated to division_mass_pg * division_rate_s. The division_rate_s value is a simulation hazard parameter, not a measured doubling rate. Other nutrients are assumed unavailable during this single-channel calibration.",
+    "formula": "max_uptake_mmol_s = division_mass_pg * division_rate_s / (biomass_fraction * molar_mass_g_mol * 1e9)",
+    "unit_derivation": "biomass_mmol * molar_mass_g_mol * 1e9 = mass_pg, matching src/microbiome/sim/engine.py::_derive_mass; therefore mmol/s is required for max_uptake_mmol_s.",
+    "parameters": {
+      "division_mass_pg_after_ftsZ_rule": 0.6,
+      "division_rate_baseline_s^-1": 5e-05,
+      "ptsG_division_rate_effect_s^-1": 0.00015,
+      "resulting_division_rate_s^-1": 0.0002,
+      "biomass_fraction": 0.75,
+      "molar_mass_g_mol": {
+        "glucose": 180.16,
+        "lactose": 342.3
+      }
+    },
+    "derived_gene_effects_mmol_s": {
+      "ptsG_glucose_each_assembly": 8.8809946714e-16,
+      "lacY_lactose_E_coli_MG1655": 4.67426234297e-16,
+      "unmapped_substrate_baseline": 0.0
+    },
+    "limitations": [
+      "The coefficients are derived from the simulation's mass conversion and chosen division calibration, not fitted biological uptake data.",
+      "Assay QA finding kb_mvc59d7hEc6dBMViUn24 reports a condition-specific E. coli B/r carbon-balance range of approximately 8e-16 to 3e-15 mmol/s per cell (280 fg dry mass, aerobic glucose minimal medium, 37 C, 40 min doubling, assumed 50% dry-mass carbon); it is not applied to MG1655, B. subtilis 168, lactose, or a maximum-capacity claim.",
+      "The zero B. subtilis lactose baseline means no lactose-specific mapping is currently curated in this table; it is not evidence that the strain lacks every lactose uptake route.",
+      "Each nutrient channel is calibrated as the sole available carbon source. If multiple channels are simultaneously saturated, their separate per-channel maxima can sum above this single-channel target; this is a documented model limitation, not a shared uptake ceiling."
+    ],
+    "evidence": [
+      {
+        "source": "Simulation mass conversion",
+        "url": "src/microbiome/sim/engine.py",
+        "feature": "_derive_mass converts mmol biomass using molar_mass_g_mol * 1e9 to pg"
+      },
+      {
+        "source": "PubChem D-glucose",
+        "url": "https://pubchem.ncbi.nlm.nih.gov/compound/107526",
+        "feature": "molecular weight 180.16 g/mol"
+      },
+      {
+        "source": "PubChem anhydrous lactose",
+        "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Lactose_-anhydrous",
+        "feature": "molecular weight 342.30 g/mol"
+      }
+    ]
+  },
+  "demo_accessions": [
+    "GCF_000005845.2",
+    "GCF_000006765.1",
+    "GCF_000009045.1",
+    "GCF_000010465.1",
+    "GCF_000012685.1"
+  ],
+  "demo_nutrient_channels": [
+    {
+      "nutrient_id": 0,
+      "name": "glucose"
+    },
+    {
+      "nutrient_id": 1,
+      "name": "lactose"
+    }
+  ],
+  "nutrient_channels": {
+    "glucose": "glucose transport and metabolism channel; demo nutrient_id 0",
+    "lactose": "lactose transport and metabolism channel; demo nutrient_id 1"
+  },
+  "baselines": {
+    "max_uptake_mmol_s": {
+      "glucose": 0.0,
+      "lactose": 0.0
+    },
+    "storage_fraction": {
+      "glucose": 0.1,
+      "lactose": 0.1
+    },
+    "biomass_fraction": {
+      "glucose": 0.75,
+      "lactose": 0.75
+    },
+    "energy_yield_pj_per_mmol": {
+      "glucose": 1000000000000000.0,
+      "lactose": 1000000000000000.0
+    },
+    "motility_um_s": 0.0,
+    "chemotaxis_sensitivity": 0.15,
+    "random_motility_fraction": 0.15,
+    "division_rate_s": 5e-05,
+    "division_mass_pg": 0.5,
+    "death_rate_s": 1e-05,
+    "max_age_s": 86400.0,
+    "antagonism_radius_um": 0.0,
+    "antagonism_rate_s": 0.0
+  },
+  "bounds": {
+    "max_uptake_mmol_s": [
+      0.0,
+      0.001
+    ],
+    "storage_fraction": [
+      0.0,
+      0.5
+    ],
+    "biomass_fraction": [
+      0.0,
+      0.9
+    ],
+    "energy_yield_pj_per_mmol": [
+      0.0,
+      1e+16
+    ],
+    "motility_um_s": [
+      0.0,
+      50.0
+    ],
+    "chemotaxis_sensitivity": [
+      0.0,
+      2.0
+    ],
+    "random_motility_fraction": [
+      0.0,
+      1.0
+    ],
+    "division_rate_s": [
+      0.0,
+      0.01
+    ],
+    "division_mass_pg": [
+      0.1,
+      10.0
+    ],
+    "death_rate_s": [
+      0.0,
+      0.01
+    ],
+    "max_age_s": [
+      1.0,
+      1000000000.0
+    ],
+    "antagonism_radius_um": [
+      0.0,
+      100.0
+    ],
+    "antagonism_rate_s": [
+      0.0,
+      0.01
+    ]
+  },
+  "rules": [
+    {
+      "rule_id": "ecoli-chea-chemotaxis",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1888",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1888": "cheA"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.35,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheA is the kinase in the E. coli chemotaxis signaling pathway; this positive coefficient encodes genome potential only and is not a measurement of signaling activity.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=cheA, locus_tag=b1888; product=chemotaxis protein CheA"
+        },
+        {
+          "source": "Jahreis et al. 2004",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC387806/",
+          "feature": "CheA is central to E. coli chemotactic signaling"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-cheb-chemotaxis-adaptation",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1883",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1883": "cheB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.05,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheB is a chemotaxis response regulator/methylesterase; a small coefficient represents adaptation capacity without modeling methylation dynamics.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=cheB, locus_tag=b1883; protein-glutamate methylesterase/protein glutamine deamidase"
+        },
+        {
+          "source": "E. coli chemotaxis signaling study",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC387806/",
+          "feature": "chemotaxis signaling/adaptation pathway context"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-cher-chemotaxis-adaptation",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1884",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1884": "cheR"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.05,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheR is the annotated chemotaxis methyltransferase; the effect is a small binary adaptation-potential coefficient.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=cheR, locus_tag=b1884; product=chemotaxis protein methyltransferase"
+        },
+        {
+          "source": "E. coli chemotaxis signaling study",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC387806/",
+          "feature": "chemotaxis pathway context"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-chey-chemotaxis-output",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1882",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1882": "cheY"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.25,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheY transmits chemotaxis output to the flagellar motor; this coefficient denotes potential, not measured motor bias.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=cheY, locus_tag=b1882; product=chemotaxis protein CheY"
+        },
+        {
+          "source": "UniProtKB P0AE67",
+          "url": "https://www.uniprot.org/uniprotkb/P0AE67/entry",
+          "feature": "CheY transmits sensory signals toward flagellar motors"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-flic-flagellar-filament",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1923",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1923": "fliC"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 8.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "FliC is the annotated flagellar filament structural protein. The numeric speed contribution is a chosen model coefficient, not a measured MG1655 swimming speed.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=fliC, locus_tag=b1923; product=flagellar filament structural protein"
+        },
+        {
+          "source": "Wood et al. 2006",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16397770/",
+          "feature": "MG1655 motility is associated with motility loci including fliC and motA"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-mota-flagellar-motor",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1890",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1890": "motA"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 1.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MotA is an annotated flagellar motor component; a small additive term represents potential motor function, not protein abundance or actual velocity.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=motA, locus_tag=b1890; product=motility protein A"
+        },
+        {
+          "source": "Wood et al. 2006",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16397770/",
+          "feature": "MG1655 motility-associated motA locus"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-motb-flagellar-motor",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1889",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1889": "motB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 1.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MotB is the stator partner of MotA; this coefficient records annotated motor potential and avoids interpreting gene presence as expression.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=motB, locus_tag=b1889; product=motility protein B"
+        },
+        {
+          "source": "UniProtKB P0AF06",
+          "url": "https://www.uniprot.org/uniprotkb/P0AF06/entry",
+          "feature": "MotB is part of the flagellar stator"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-ptsg-glucose-uptake",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1101",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1101": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "max_uptake_mmol_s",
+      "nutrient_name": "glucose",
+      "operation": "add",
+      "value": 8.8809946714e-16,
+      "unit": "mmol/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "The annotated PtsG is the glucose-specific PTS IIBC component. Its uptake effect is calculated from the explicit single-substrate mass-balance calibration above, not copied from a B/r measurement or claimed as an MG1655 flux.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=b1101; product=glucose-specific PTS enzyme IIBC component"
+        },
+        {
+          "source": "Carreón-Rodríguez et al. 2023",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10305011/",
+          "feature": "PTS systems mediate sugar uptake and phosphorylation in E. coli"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-ptsg-glucose-growth-proxy",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b1101",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b1101": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_rate_s",
+      "operation": "add",
+      "value": 0.00015,
+      "unit": "s^-1",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Glucose import can support growth under glucose-available conditions. Mapping this transporter to division hazard is deliberately indirect and does not assert a constitutive growth rate.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=b1101"
+        },
+        {
+          "source": "Carreón-Rodríguez et al. 2023",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10305011/",
+          "feature": "glucose transport and regulation in E. coli"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-lacy-lactose-uptake",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b0343",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b0343": "lacY"
+      },
+      "source_feature_type": "CDS",
+      "trait": "max_uptake_mmol_s",
+      "nutrient_name": "lactose",
+      "operation": "add",
+      "value": 4.67426234297e-16,
+      "unit": "mmol/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "LacY is annotated lactose permease and transports beta-galactosides. Its effect is derived from the same single-substrate mass-balance calibration as PtsG; it is not a measured lactose flux or a claim about MG1655 lactose growth conditions.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=lacY, locus_tag=b0343; product=lactose permease"
+        },
+        {
+          "source": "UniProtKB P02920",
+          "url": "https://www.uniprot.org/uniprotkb/P02920/entry",
+          "feature": "LacY transports beta-galactosides into the cell"
+        }
+      ]
+    },
+    {
+      "rule_id": "ecoli-ftsz-division-threshold",
+      "genome_accession": "GCF_000005845.2",
+      "gene_key": "GCF_000005845.2|locus_tag:b0095",
+      "gene_symbols": {
+        "GCF_000005845.2|locus_tag:b0095": "ftsZ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_mass_pg",
+      "operation": "add",
+      "value": 0.1,
+      "unit": "pg",
+      "approximation_status": "calibrated_simplification",
+      "justification": "FtsZ is conserved division machinery that assembles at the division site. Its presence enables a finite model division threshold; the added mass is a simulator calibration, not a causal prediction of cell size.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/",
+          "feature": "GFF3 CDS gene=ftsZ, locus_tag=b0095; product=cell division protein FtsZ"
+        },
+        {
+          "source": "Romberg and Levin 2003",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5517307/",
+          "feature": "FtsZ is a conserved bacterial cell-division protein"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-chea-chemotaxis",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_16430",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_16430": "cheA"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.35,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "The NCBI annotation identifies CheA as the chemotactic two-component sensor histidine kinase; this coefficient denotes signaling potential, not measured activity.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=cheA, locus_tag=BSU_16430"
+        },
+        {
+          "source": "Cannistraro et al. 2011",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3133262/",
+          "feature": "B. subtilis chemotaxis signaling proteins"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-chec-chemotaxis-adaptation",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_16450",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_16450": "cheC"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.05,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheC is annotated as a chemotaxis adaptation/signal-terminating phosphatase; its presence is represented by a small binary potential effect.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=cheC, locus_tag=BSU_16450"
+        },
+        {
+          "source": "Mukherjee and Kearns 2014",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4869327/",
+          "feature": "B. subtilis flagellar and motility regulatory systems"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-ched-chemotaxis-adaptation",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_16460",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_16460": "cheD"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.05,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheD is annotated as a receptor-specificity/adaptation protein in chemotaxis; the coefficient does not model the underlying methylation/deamidation dynamics.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=cheD, locus_tag=BSU_16460"
+        },
+        {
+          "source": "Mukherjee and Kearns 2014",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4869327/",
+          "feature": "B. subtilis flagellar and motility regulatory systems"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-chey-chemotaxis-output",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_16330",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_16330": "cheY"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.25,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheY is annotated as a regulator of B. subtilis chemotaxis and motility; this coefficient is genome potential and not transcriptional activity.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=cheY, locus_tag=BSU_16330"
+        },
+        {
+          "source": "Cannistraro et al. 2011",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3133262/",
+          "feature": "B. subtilis chemotaxis proteins"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-hag-flagellar-filament",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_35360",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_35360": "hag"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 8.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Hag is annotated flagellin, the flagellar filament protein. The coefficient is a simulator calibration, not an observed swimming speed.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=hag, locus_tag=BSU_35360; product=flagellin protein"
+        },
+        {
+          "source": "Mukherjee and Kearns 2014",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4869327/",
+          "feature": "B. subtilis flagellar structures and motility"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-mota-flagellar-motor",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_13690",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_13690": "motA"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 1.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MotA is an annotated H+-coupled flagellar stator/motor component; the small increment represents potential only.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=motA, locus_tag=BSU_13690"
+        },
+        {
+          "source": "Mukherjee and Kearns 2014",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4869327/",
+          "feature": "B. subtilis flagellar motor"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-motb-flagellar-motor",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_13680",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_13680": "motB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 1.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MotB is the annotated stator partner in the H+-coupled flagellar complex; the numeric effect is not protein-expression data.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=motB, locus_tag=BSU_13680"
+        },
+        {
+          "source": "Mukherjee and Kearns 2014",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4869327/",
+          "feature": "B. subtilis flagellar motor"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-ptsg-glucose-uptake",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_13890",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_13890": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "max_uptake_mmol_s",
+      "nutrient_name": "glucose",
+      "operation": "add",
+      "value": 8.8809946714e-16,
+      "unit": "mmol/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "NCBI annotates this PtsG as a glucose-specific PTS IICBA component. Its effect is calculated from the explicit single-substrate mass-balance calibration above, not a measured B. subtilis flux.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=BSU_13890; product=glucose-specific PTS enzyme IICBA component"
+        },
+        {
+          "source": "NCBI RefSeq annotation evidence",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "The GFF3 note cites studied-strain experimental evidence for this product annotation"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-ptsg-glucose-growth-proxy",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_13890",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_13890": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_rate_s",
+      "operation": "add",
+      "value": 0.00015,
+      "unit": "s^-1",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Glucose import can supply growth substrates when glucose is available; mapping transporter presence directly to division hazard is an explicit condition-free proxy.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=BSU_13890; glucose-specific PTS transporter"
+        },
+        {
+          "source": "NCBI RefSeq annotation evidence",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "Studied-strain experimental references are recorded in the source GFF3 Note field"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-ftsz-division-threshold",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_15290",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_15290": "ftsZ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_mass_pg",
+      "operation": "add",
+      "value": 0.1,
+      "unit": "pg",
+      "approximation_status": "calibrated_simplification",
+      "justification": "The source annotation identifies FtsZ as a cell-division initiation protein. The finite division mass is a model coefficient, not a measured FtsZ-dependent cell-size phenotype.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS gene=ftsZ, locus_tag=BSU_15290; product=cell-division initiation protein"
+        },
+        {
+          "source": "Romberg and Levin 2003",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5517307/",
+          "feature": "FtsZ is conserved bacterial cell-division machinery"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-bacilysin-antagonism-radius",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_37710",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_37680": "bacG",
+        "GCF_000009045.1|locus_tag:BSU_37690": "bacF",
+        "GCF_000009045.1|locus_tag:BSU_37700": "bacE",
+        "GCF_000009045.1|locus_tag:BSU_37710": "bacD",
+        "GCF_000009045.1|locus_tag:BSU_37720": "bacC",
+        "GCF_000009045.1|locus_tag:BSU_37730": "bacB",
+        "GCF_000009045.1|locus_tag:BSU_37740": "bacA"
+      },
+      "requires_gene_keys": [
+        "GCF_000009045.1|locus_tag:BSU_37680",
+        "GCF_000009045.1|locus_tag:BSU_37690",
+        "GCF_000009045.1|locus_tag:BSU_37700",
+        "GCF_000009045.1|locus_tag:BSU_37710",
+        "GCF_000009045.1|locus_tag:BSU_37720",
+        "GCF_000009045.1|locus_tag:BSU_37730",
+        "GCF_000009045.1|locus_tag:BSU_37740"
+      ],
+      "source_feature_type": "CDS",
+      "trait": "antagonism_radius_um",
+      "operation": "add",
+      "value": 12.0,
+      "unit": "um",
+      "approximation_status": "calibrated_simplification",
+      "justification": "B. subtilis 168 carries the annotated bacilysin biosynthetic cluster. The rule requires the complete annotated bacA-G gene set and fires once; this avoids claiming a single enzyme is sufficient or double-counting cluster members. The spatial radius is an engine calibration, not a measured antibiotic diffusion radius.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 CDS features BSU_37680 through BSU_37740 annotate bacG/F/E/D/C/B/A with bacilysin-related products"
+        },
+        {
+          "source": "Steinborn et al. 2005",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15609023/",
+          "feature": "B. subtilis 168 ywfBCDEF biosynthetic core genes were renamed bacABCDE"
+        }
+      ]
+    },
+    {
+      "rule_id": "bacillus-bacilysin-antagonism-rate",
+      "genome_accession": "GCF_000009045.1",
+      "gene_key": "GCF_000009045.1|locus_tag:BSU_37710",
+      "gene_symbols": {
+        "GCF_000009045.1|locus_tag:BSU_37680": "bacG",
+        "GCF_000009045.1|locus_tag:BSU_37690": "bacF",
+        "GCF_000009045.1|locus_tag:BSU_37700": "bacE",
+        "GCF_000009045.1|locus_tag:BSU_37710": "bacD",
+        "GCF_000009045.1|locus_tag:BSU_37720": "bacC",
+        "GCF_000009045.1|locus_tag:BSU_37730": "bacB",
+        "GCF_000009045.1|locus_tag:BSU_37740": "bacA"
+      },
+      "requires_gene_keys": [
+        "GCF_000009045.1|locus_tag:BSU_37680",
+        "GCF_000009045.1|locus_tag:BSU_37690",
+        "GCF_000009045.1|locus_tag:BSU_37700",
+        "GCF_000009045.1|locus_tag:BSU_37710",
+        "GCF_000009045.1|locus_tag:BSU_37720",
+        "GCF_000009045.1|locus_tag:BSU_37730",
+        "GCF_000009045.1|locus_tag:BSU_37740"
+      ],
+      "source_feature_type": "CDS",
+      "trait": "antagonism_rate_s",
+      "operation": "add",
+      "value": 0.001,
+      "unit": "s^-1",
+      "approximation_status": "calibrated_simplification",
+      "justification": "The complete annotated bacilysin cluster is treated as an antagonism-capability marker. The rate is a calibrated contact-mortality hazard in the simulation and must not be read as a measured bacilysin dose or killing rate.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009045.1/",
+          "feature": "GFF3 bacilysin-related bacA-G CDS products"
+        },
+        {
+          "source": "Steinborn et al. 2005",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15609023/",
+          "feature": "bac genes are involved in bacilysin biosynthesis"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-chey-chemotaxis-output",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA1456",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA1456": "cheY"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.25,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheY, the chemotaxis response regulator that controls the flagellar motor. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=cheY, locus_tag=PA1456; product: chemotaxis protein CheY"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-chez-chemotaxis-phosphatase",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA1457",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA1457": "cheZ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.05,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "CheZ, the annotated CheY phosphatase: terminates the signal. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=cheZ, locus_tag=PA1457; product: protein phosphatase CheZ"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-cheb-chemotaxis-adaptation",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA1459",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA1459": "NP_250150.1"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.05,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Annotated chemotaxis-specific methylesterase (CheB): adaptation capacity. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=NP_250150.1, locus_tag=PA1459; product: chemotaxis-specific methylesterase"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-chew-chemotaxis-coupling",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA1464",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA1464": "NP_250155.1"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.1,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Annotated purine-binding chemotaxis protein (CheW-type coupling protein) of the che cluster. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=NP_250155.1, locus_tag=PA1464; product: purine-binding chemotaxis protein"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-mcp-chemotaxis-receptor",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA1930",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA1930": "NP_250620.1"
+      },
+      "source_feature_type": "CDS",
+      "trait": "chemotaxis_sensitivity",
+      "operation": "add",
+      "value": 0.2,
+      "unit": "dimensionless",
+      "approximation_status": "calibrated_simplification",
+      "justification": "An annotated chemotaxis transducer (methyl-accepting receptor). The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=NP_250620.1, locus_tag=PA1930; product: chemotaxis transducer"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-flic-flagellar-filament",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA1092",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA1092": "fliC"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 8.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "FliC, the flagellin of the single polar flagellum. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=fliC, locus_tag=PA1092; product: B-type flagellin"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-mota-flagellar-motor",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA4954",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA4954": "motA"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 1.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MotA, a stator subunit of the flagellar motor. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=motA, locus_tag=PA4954; product: flagellar motor protein MotA"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-motb-flagellar-motor",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA4953",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA4953": "motB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 1.0,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MotB, a stator subunit of the flagellar motor. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=motB, locus_tag=PA4953; product: flagellar motor protein MotB"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-oprb-glucose-uptake",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA3186",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA3186": "oprB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "max_uptake_mmol_s",
+      "nutrient_name": "glucose",
+      "operation": "add",
+      "value": 8.8809946714e-16,
+      "unit": "mmol/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "OprB is the annotated glucose-selective porin (P. aeruginosa has no glucose PTS). Its rate is the same D2 single-channel calibration as for the other organisms; the organism-specific rate is set by data/calibration_fit.json. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=oprB, locus_tag=PA3186; product: porin B"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-oprb-glucose-growth-proxy",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA3186",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA3186": "oprB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_rate_s",
+      "operation": "add",
+      "value": 0.00015,
+      "unit": "s^-1",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Glucose import can support growth; the same deliberately indirect division-hazard proxy as the other organisms. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=oprB, locus_tag=PA3186; product: porin B"
+        }
+      ]
+    },
+    {
+      "rule_id": "pseudomonas-ftsz-division-threshold",
+      "genome_accession": "GCF_000006765.1",
+      "gene_key": "GCF_000006765.1|locus_tag:PA4407",
+      "gene_symbols": {
+        "GCF_000006765.1|locus_tag:PA4407": "ftsZ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_mass_pg",
+      "operation": "add",
+      "value": 0.1,
+      "unit": "pg",
+      "approximation_status": "calibrated_simplification",
+      "justification": "FtsZ is conserved division machinery that assembles at the division site; same calibration as the other organisms. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000006765.1/",
+          "feature": "GFF3 CDS gene=ftsZ, locus_tag=PA4407; product: cell division protein FtsZ"
+        }
+      ]
+    },
+    {
+      "rule_id": "staphylococcus-ptsg-glucose-uptake-1",
+      "genome_accession": "GCF_000010465.1",
+      "gene_key": "GCF_000010465.1|locus_tag:NWMN_RS00735",
+      "gene_symbols": {
+        "GCF_000010465.1|locus_tag:NWMN_RS00735": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "max_uptake_mmol_s",
+      "nutrient_name": "glucose",
+      "operation": "add",
+      "value": 4.4404973357e-16,
+      "unit": "mmol/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Annotated glucose-specific PTS transporter IIBC (ptsG); the genome has two paralogs, each carries half of the single-channel calibration. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000010465.1/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=NWMN_RS00735; product: glucose-specific PTS transporter subunit IIBC"
+        }
+      ]
+    },
+    {
+      "rule_id": "staphylococcus-ptsg-glucose-uptake-2",
+      "genome_accession": "GCF_000010465.1",
+      "gene_key": "GCF_000010465.1|locus_tag:NWMN_RS14005",
+      "gene_symbols": {
+        "GCF_000010465.1|locus_tag:NWMN_RS14005": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "max_uptake_mmol_s",
+      "nutrient_name": "glucose",
+      "operation": "add",
+      "value": 4.4404973357e-16,
+      "unit": "mmol/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "The second annotated glucose-specific PTS transporter IIBC (ptsG paralog). The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000010465.1/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=NWMN_RS14005; product: glucose-specific PTS transporter subunit IIBC"
+        }
+      ]
+    },
+    {
+      "rule_id": "staphylococcus-ptsg-glucose-growth-proxy",
+      "genome_accession": "GCF_000010465.1",
+      "gene_key": "GCF_000010465.1|locus_tag:NWMN_RS00735",
+      "gene_symbols": {
+        "GCF_000010465.1|locus_tag:NWMN_RS00735": "ptsG"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_rate_s",
+      "operation": "add",
+      "value": 0.00015,
+      "unit": "s^-1",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Glucose import can support growth; the same indirect division-hazard proxy as the other organisms. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000010465.1/",
+          "feature": "GFF3 CDS gene=ptsG, locus_tag=NWMN_RS00735; product: glucose-specific PTS transporter subunit IIBC"
+        }
+      ]
+    },
+    {
+      "rule_id": "staphylococcus-ftsz-division-threshold",
+      "genome_accession": "GCF_000010465.1",
+      "gene_key": "GCF_000010465.1|locus_tag:NWMN_RS06210",
+      "gene_symbols": {
+        "GCF_000010465.1|locus_tag:NWMN_RS06210": "ftsZ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_mass_pg",
+      "operation": "add",
+      "value": 0.1,
+      "unit": "pg",
+      "approximation_status": "calibrated_simplification",
+      "justification": "FtsZ is conserved division machinery; same calibration as the other organisms. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000010465.1/",
+          "feature": "GFF3 CDS gene=ftsZ, locus_tag=NWMN_RS06210; product: cell division protein FtsZ"
+        }
+      ]
+    },
+    {
+      "rule_id": "myxococcus-mgla-gliding-regulator",
+      "genome_accession": "GCF_000012685.1",
+      "gene_key": "GCF_000012685.1|locus_tag:MXAN_RS09335",
+      "gene_symbols": {
+        "GCF_000012685.1|locus_tag:MXAN_RS09335": "mglA"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 0.02,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MglA, the Ras-like GTPase that polarises gliding motility. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000012685.1/",
+          "feature": "GFF3 CDS gene=mglA, locus_tag=MXAN_RS09335; product: gliding-motility regulator Ras-like GTPase MglA"
+        }
+      ]
+    },
+    {
+      "rule_id": "myxococcus-mglb-gliding-regulator",
+      "genome_accession": "GCF_000012685.1",
+      "gene_key": "GCF_000012685.1|locus_tag:MXAN_RS09340",
+      "gene_symbols": {
+        "GCF_000012685.1|locus_tag:MXAN_RS09340": "mglB"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 0.01,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "MglB, the GTPase-activating protein that works with MglA. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000012685.1/",
+          "feature": "GFF3 CDS gene=mglB, locus_tag=MXAN_RS09340; product: gliding-motility regulator GTPase-activating protein MglB"
+        }
+      ]
+    },
+    {
+      "rule_id": "myxococcus-gltj-gliding-machinery",
+      "genome_accession": "GCF_000012685.1",
+      "gene_key": "GCF_000012685.1|locus_tag:MXAN_RS23610",
+      "gene_symbols": {
+        "GCF_000012685.1|locus_tag:MXAN_RS23610": "gltJ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "motility_um_s",
+      "operation": "add",
+      "value": 0.01,
+      "unit": "um/s",
+      "approximation_status": "calibrated_simplification",
+      "justification": "Annotated adventurous gliding motility protein GltJ. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000012685.1/",
+          "feature": "GFF3 CDS gene=gltJ, locus_tag=MXAN_RS23610; product: adventurous gliding motility protein GltJ"
+        }
+      ]
+    },
+    {
+      "rule_id": "myxococcus-ftsz-division-threshold",
+      "genome_accession": "GCF_000012685.1",
+      "gene_key": "GCF_000012685.1|locus_tag:MXAN_RS27120",
+      "gene_symbols": {
+        "GCF_000012685.1|locus_tag:MXAN_RS27120": "ftsZ"
+      },
+      "source_feature_type": "CDS",
+      "trait": "division_mass_pg",
+      "operation": "add",
+      "value": 0.1,
+      "unit": "pg",
+      "approximation_status": "calibrated_simplification",
+      "justification": "FtsZ is conserved division machinery; same calibration as the other organisms. The coefficient encodes genome potential only and is not a measurement.",
+      "evidence": [
+        {
+          "source": "NCBI RefSeq annotation",
+          "url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000012685.1/",
+          "feature": "GFF3 CDS gene=ftsZ, locus_tag=MXAN_RS27120; product: cell division protein FtsZ"
+        }
+      ]
+    }
+  ]
+}

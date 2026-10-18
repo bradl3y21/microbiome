@@ -1,0 +1,3 @@
+# Bytes are stored exactly as they are: the genome files are checked against SHA-256 hashes in data/manifest.json,
+# so no line-ending conversion may touch them.
+* -text

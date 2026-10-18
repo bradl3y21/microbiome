@@ -1,0 +1,760 @@
+{
+  "schema_version": 1,
+  "generated_by": "python -m microbiome.calibration fit",
+  "targets_sha256": "fa5ff9d8c06629bae39e3e2d6dc8c30060b3ad995fafaf49a6d73bf2b5743cdc",
+  "note": "Produced by the fit; do not edit by hand. Fit targets are matched by construction; see docs/CALIBRATION.md for what is and is not validated.",
+  "organisms": {
+    "GCF_000005845.2": {
+      "uptake_scale": 1.126515,
+      "biomass_scale": 0.41364,
+      "storage_scale": 0.2,
+      "overflow_scale": 1.201218,
+      "division_mass_scale": 0.452044,
+      "motility_scale": 1.0,
+      "maintenance_mmol_glc_gdw_h": 0.37,
+      "run_time_s": 0.0,
+      "turn_mean_deg": 0.0,
+      "turn_sd_deg": 0.0
+    },
+    "GCF_000009045.1": {
+      "uptake_scale": 0.817662,
+      "biomass_scale": 0.595992,
+      "storage_scale": 0.2,
+      "overflow_scale": 1.175125,
+      "division_mass_scale": 1.0,
+      "motility_scale": 0.62,
+      "maintenance_mmol_glc_gdw_h": 0.39,
+      "run_time_s": 0.0,
+      "turn_mean_deg": 0.0,
+      "turn_sd_deg": 0.0
+    },
+    "GCF_000006765.1": {
+      "uptake_scale": 0.893703,
+      "biomass_scale": 0.736053,
+      "storage_scale": 0.2,
+      "overflow_scale": 1.0,
+      "division_mass_scale": 1.0,
+      "motility_scale": 1.256667,
+      "maintenance_mmol_glc_gdw_h": 0.37,
+      "run_time_s": 2.18,
+      "turn_mean_deg": 165.0,
+      "turn_sd_deg": 9.1
+    },
+    "GCF_000010465.1": {
+      "uptake_scale": 1.164068,
+      "biomass_scale": 0.64597,
+      "storage_scale": 0.2,
+      "overflow_scale": 1.0,
+      "division_mass_scale": 0.525253,
+      "motility_scale": 1.0,
+      "maintenance_mmol_glc_gdw_h": 0.37,
+      "run_time_s": 0.0,
+      "turn_mean_deg": 0.0,
+      "turn_sd_deg": 0.0
+    },
+    "GCF_000012685.1": {
+      "uptake_scale": 1.0,
+      "biomass_scale": 1.0,
+      "storage_scale": 0.2,
+      "overflow_scale": 1.0,
+      "division_mass_scale": 0.834557,
+      "motility_scale": 0.958333,
+      "maintenance_mmol_glc_gdw_h": 0.37,
+      "run_time_s": 0.0,
+      "turn_mean_deg": 0.0,
+      "turn_sd_deg": 0.0
+    }
+  },
+  "shared": {
+    "swim_speed_scale": 3.0,
+    "tumble_rate_per_s": 1.5625,
+    "tumble_angle_mean_deg": 60.666173,
+    "tumble_angle_sd_deg": 39.405613,
+    "chemotaxis_gain": 9.179488,
+    "reversal_rate_per_s": 0.002222,
+    "predation_assimilation": 0.135302,
+    "development_speed_factor": 3.130435,
+    "aggregate_speed_ratio": 0.191667
+  },
+  "assumptions": {
+    "storage_scale": "0.2 of the D2 storage fraction (0.1 -> 0.02): no measurement of glycogen storage was found; it only sets how much substrate a starving cell can burn",
+    "ecoli.maintenance": "NGAM 8.39 mmol ATP/gDW/h divided by an assumed 20-26 ATP per glucose",
+    "bsub.dry_mass": "not found; the D2 division mass is kept",
+    "maintenance of P. aeruginosa, S. aureus, M. xanthus": "no coefficient was found; E. coli's assumed 0.37 mmol glucose/gDW/h is a placeholder",
+    "pa.dry_mass, sa.dry_mass": "not found (searched); the D2 division mass is kept for P. aeruginosa, and S. aureus is sized by cell volume instead"
+  },
+  "report": [
+    {
+      "id": "ecoli.growth_rate.glucose_M9",
+      "role": "fit",
+      "quantity": "specific growth rate, glucose M9, aerobic batch",
+      "unit": "1/h",
+      "target": 0.65,
+      "sd": 0.02,
+      "range": null,
+      "measured": 0.6499999999999608,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "ecoli.q_glucose.glucose_M9",
+      "role": "fit",
+      "quantity": "specific glucose uptake rate",
+      "unit": "mmol/gDW/h",
+      "target": 12.0,
+      "sd": 0.5,
+      "range": null,
+      "measured": 11.999999999997742,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "ecoli.q_oxygen.glucose_M9",
+      "role": "fit",
+      "quantity": "specific oxygen uptake rate",
+      "unit": "mmol/gDW/h",
+      "target": 27.0,
+      "sd": 1.0,
+      "range": null,
+      "measured": 26.999256343125197,
+      "ok": true,
+      "note": "acetate carbon fraction 0.21 (inferred, not measured)"
+    },
+    {
+      "id": "ecoli.dry_mass.mean_at_mu_0.65",
+      "role": "fit",
+      "quantity": "mean dry mass per cell at the growth rate above",
+      "unit": "fg",
+      "target": 188.0,
+      "sd": 20.0,
+      "range": null,
+      "measured": 187.99999999999997,
+      "ok": true,
+      "note": "analytic: division mass / 1.443"
+    },
+    {
+      "id": "bsub.growth_rate.glucose_M9",
+      "role": "fit",
+      "quantity": "specific growth rate, glucose M9, aerobic batch",
+      "unit": "1/h",
+      "target": 0.67,
+      "sd": 0.02,
+      "range": null,
+      "measured": 0.669999999999945,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "bsub.q_glucose.glucose_M9",
+      "role": "fit",
+      "quantity": "specific glucose uptake rate",
+      "unit": "mmol/gDW/h",
+      "target": 8.71,
+      "sd": 0.64,
+      "range": null,
+      "measured": 8.710000000000544,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "bsub.q_acetate.glucose_M9",
+      "role": "fit",
+      "quantity": "specific acetate production rate",
+      "unit": "mmol/gDW/h",
+      "target": 4.28,
+      "sd": 0.29,
+      "range": null,
+      "measured": 4.280147959523095,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "bsub.yield.glucose_M9",
+      "role": "held_out",
+      "quantity": "biomass yield on glucose",
+      "unit": "gDW/g glucose",
+      "target": 0.44,
+      "sd": 0.03,
+      "range": null,
+      "measured": 0.4269803776897011,
+      "ok": true,
+      "note": "held out"
+    },
+    {
+      "id": "ecoli.Ks.glucose",
+      "role": "range",
+      "quantity": "glucose concentration at half the maximum growth rate (Monod Ks)",
+      "unit": "mmol/L",
+      "target": null,
+      "sd": null,
+      "range": [
+        0.00022,
+        0.55
+      ],
+      "measured": 0.01074651206631562,
+      "ok": true,
+      "note": "interpolated half-saturation of the simulated Monod curve"
+    },
+    {
+      "id": "ecoli.acetate.none_below_D_0.3",
+      "role": "held_out",
+      "quantity": "acetate excretion in glucose-limited chemostat growth below a dilution rate of 0.3/h",
+      "unit": "(not observed)",
+      "target": 0.0,
+      "sd": null,
+      "range": null,
+      "measured": 0.003867516855684565,
+      "ok": true,
+      "note": "acetate carbon fraction at mu = 0.3/h"
+    },
+    {
+      "id": "ecoli.acetate.batch_threshold",
+      "role": "reference",
+      "quantity": "growth rate above which acetate is excreted in batch growth (threshold-linear)",
+      "unit": "1/h",
+      "target": 0.76,
+      "sd": null,
+      "range": null,
+      "measured": null,
+      "ok": null,
+      "note": "not reproduced: overflow depends on sugar saturation, not on growth rate"
+    },
+    {
+      "id": "ecoli.maintenance",
+      "role": "assumed",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "target": 0.37,
+      "sd": null,
+      "range": [
+        0.32,
+        0.42
+      ],
+      "measured": 0.37000193588333047,
+      "ok": true,
+      "note": "Pirt intercept; yield 0.310 g/g from the slope"
+    },
+    {
+      "id": "bsub.maintenance.chemostat_check",
+      "role": "held_out",
+      "quantity": "Pirt relation reproduced: uptake rate q = mu/Y + m over dilution rates 0.05-0.4/h",
+      "unit": "mmol glucose/gDW/h",
+      "target": 0.39,
+      "sd": 0.08,
+      "range": null,
+      "measured": 0.3900013297199416,
+      "ok": true,
+      "note": "Pirt intercept; yield 0.447 g/g from the slope"
+    },
+    {
+      "id": "bsub.maintenance",
+      "role": "fit",
+      "quantity": "maintenance energy coefficient (Pirt intercept of glucose uptake against dilution rate)",
+      "unit": "mmol glucose/gDW/h",
+      "target": 0.39,
+      "sd": 0.08,
+      "range": null,
+      "measured": 0.3900013297199416,
+      "ok": true,
+      "note": "Pirt intercept; yield 0.447 g/g from the slope"
+    },
+    {
+      "id": "ecoli.swim_speed",
+      "role": "fit",
+      "quantity": "mean swimming speed in liquid",
+      "unit": "um/s",
+      "target": 30.0,
+      "sd": 8.0,
+      "range": null,
+      "measured": 30.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "ecoli.run_time",
+      "role": "fit",
+      "quantity": "mean run duration with no gradient (strain AW405, the strain Berg and Brown used)",
+      "unit": "s",
+      "target": 0.64,
+      "sd": null,
+      "range": null,
+      "measured": 0.6470630526996909,
+      "ok": true,
+      "note": "measured tumble rate inverted"
+    },
+    {
+      "id": "ecoli.random_motility",
+      "role": "held_out",
+      "quantity": "random motility coefficient (3D effective diffusivity of the swimming population)",
+      "unit": "um^2/s",
+      "target": 330.0,
+      "sd": 80.0,
+      "range": null,
+      "measured": 272.23993406900814,
+      "ok": true,
+      "note": "2D MSD diffusivity 408 um^2/s x 2/3"
+    },
+    {
+      "id": "bsub.swim_speed",
+      "role": "fit",
+      "quantity": "mean swimming (running) speed in liquid",
+      "unit": "um/s",
+      "target": 18.6,
+      "sd": null,
+      "range": null,
+      "measured": 18.599999999999994,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "ecoli.tumble_angle",
+      "role": "fit",
+      "quantity": "mean reorientation at a tumble",
+      "unit": "deg",
+      "target": 62.5,
+      "sd": 6.0,
+      "range": null,
+      "measured": 62.757923299226434,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "ecoli.tumble_angle_sd",
+      "role": "fit",
+      "quantity": "spread of the reorientation angle",
+      "unit": "deg",
+      "target": 36.0,
+      "sd": null,
+      "range": null,
+      "measured": 36.06323466652241,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "ecoli.chemotactic_velocity",
+      "role": "fit",
+      "quantity": "maximum up-gradient drift as a fraction of swimming speed",
+      "unit": "fraction of v",
+      "target": 0.3,
+      "sd": null,
+      "range": [
+        0.15,
+        0.35
+      ],
+      "measured": 0.29847320887540807,
+      "ok": true,
+      "note": "peak at a 500 um period"
+    },
+    {
+      "id": "ecoli.tumble_time",
+      "role": "reference",
+      "quantity": "mean tumble duration",
+      "unit": "s",
+      "target": 0.19,
+      "sd": null,
+      "range": null,
+      "measured": 0.0,
+      "ok": null,
+      "note": "tumbles are instantaneous in the model"
+    },
+    {
+      "id": "pa.growth_rate.glucose",
+      "role": "fit",
+      "quantity": "specific growth rate, glucose, aerobic batch",
+      "unit": "1/h",
+      "target": 0.91,
+      "sd": 0.02,
+      "range": null,
+      "measured": 0.9099999999999492,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "pa.q_glucose.glucose",
+      "role": "fit",
+      "quantity": "specific glucose uptake rate, aerobic batch",
+      "unit": "mmol/gDW/h",
+      "target": 9.52,
+      "sd": 0.21,
+      "range": null,
+      "measured": 9.520000000001733,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "pa.growth_rate.glucose_dolan",
+      "role": "held_out",
+      "quantity": "specific growth rate in a second laboratory (MOPS, 15 mM glucose)",
+      "unit": "1/h",
+      "target": 0.88,
+      "sd": 0.05,
+      "range": null,
+      "measured": 0.9099999999999492,
+      "ok": true,
+      "note": "held out: a second laboratory; yield 0.53 g/g against the 0.53 of the first"
+    },
+    {
+      "id": "pa.swim_speed",
+      "role": "fit",
+      "quantity": "swimming speed during runs (mean of pull and push modes)",
+      "unit": "um/s",
+      "target": 37.7,
+      "sd": 0.8,
+      "range": null,
+      "measured": 37.7,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "pa.run_reverse",
+      "role": "fit",
+      "quantity": "mean run duration before a reversal (pull and push modes)",
+      "unit": "s",
+      "target": 2.18,
+      "sd": 0.08,
+      "range": null,
+      "measured": 2.164762477450391,
+      "ok": true,
+      "note": "measured reversal rate inverted"
+    },
+    {
+      "id": "pa.turn_angle",
+      "role": "fit",
+      "quantity": "reorientation angle at a pull-to-push reversal",
+      "unit": "degrees",
+      "target": 165.0,
+      "sd": 9.1,
+      "range": null,
+      "measured": 164.86499053267767,
+      "ok": true,
+      "note": "sd 8.7 degrees"
+    },
+    {
+      "id": "pa.width",
+      "role": "range",
+      "quantity": "cell width",
+      "unit": "um",
+      "target": 0.75,
+      "sd": null,
+      "range": [
+        0.5,
+        1.0
+      ],
+      "measured": 0.75,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "pa.maintenance",
+      "role": "assumed",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "target": 0.37,
+      "sd": null,
+      "range": [
+        0.32,
+        0.42
+      ],
+      "measured": 0.37000078275529535,
+      "ok": true,
+      "note": "Pirt intercept; yield 0.552 g/g from the slope"
+    },
+    {
+      "id": "sa.growth_rate.glucose",
+      "role": "fit",
+      "quantity": "specific growth rate, defined glucose medium, aerobic",
+      "unit": "1/h",
+      "target": 1.05,
+      "sd": 0.08,
+      "range": null,
+      "measured": 1.0499999999999674,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "sa.q_glucose.glucose",
+      "role": "fit",
+      "quantity": "maximal specific glucose consumption rate, aerobic",
+      "unit": "mmol/gDW/h",
+      "target": 12.4,
+      "sd": 0.2,
+      "range": null,
+      "measured": 12.400000000000896,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "sa.division_volume",
+      "role": "fit",
+      "quantity": "cell volume at division (twice the newborn volume of 0.52 um^3)",
+      "unit": "um^3",
+      "target": 1.04,
+      "sd": null,
+      "range": [
+        0.98,
+        1.1
+      ],
+      "measured": 1.04,
+      "ok": true,
+      "note": "analytic: division mass x the model's 3.3 um^3/pg"
+    },
+    {
+      "id": "sa.maintenance",
+      "role": "assumed",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "target": 0.37,
+      "sd": null,
+      "range": [
+        0.32,
+        0.42
+      ],
+      "measured": 0.37000066973042667,
+      "ok": true,
+      "note": "Pirt intercept; yield 0.484 g/g from the slope"
+    },
+    {
+      "id": "sa.products",
+      "role": "reference",
+      "quantity": "acetate : lactate secretion ratio, aerobic",
+      "unit": "ratio",
+      "target": 2.0,
+      "sd": null,
+      "range": null,
+      "measured": null,
+      "ok": null,
+      "note": "the model makes acetate only (4.9 mmol/gDW/h) and no lactate"
+    },
+    {
+      "id": "mx.predator_growth",
+      "role": "fit",
+      "quantity": "predator growth rate among an excess of E. coli prey (no swarm expansion)",
+      "unit": "1/h",
+      "target": 0.183,
+      "sd": null,
+      "range": null,
+      "measured": 0.20679357092967332,
+      "ok": true,
+      "note": "170 kills of 400 prey in 40 min; the 0.03 tolerance is this work's, the source gives no error"
+    },
+    {
+      "id": "mx.glide_speed",
+      "role": "fit",
+      "quantity": "gliding speed of a single cell (A-motility, no prey)",
+      "unit": "um/min",
+      "target": 2.3,
+      "sd": 1.1,
+      "range": null,
+      "measured": 2.2993971772817314,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "mx.reversal_period",
+      "role": "fit",
+      "quantity": "mean time between reversals of a gliding cell",
+      "unit": "min",
+      "target": 7.5,
+      "sd": 3.0,
+      "range": null,
+      "measured": 7.758620689655173,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "mx.dev_speed_outside",
+      "role": "fit",
+      "quantity": "gliding speed of a starved cell outside aggregates",
+      "unit": "um/s",
+      "target": 0.12,
+      "sd": 0.04,
+      "range": null,
+      "measured": 0.1199685567110656,
+      "ok": true,
+      "note": "a fully starved cell: gliding speed x the development factor"
+    },
+    {
+      "id": "mx.dev_speed_inside",
+      "role": "fit",
+      "quantity": "gliding speed of a starved cell inside an aggregate",
+      "unit": "um/s",
+      "target": 0.023,
+      "sd": 0.01,
+      "range": null,
+      "measured": 0.022994013359139812,
+      "ok": true,
+      "note": "the same cell fully activated by contact"
+    },
+    {
+      "id": "mx.cell_length",
+      "role": "fit",
+      "quantity": "mean cell length (5 to 7 um)",
+      "unit": "um",
+      "target": 6.0,
+      "sd": null,
+      "range": [
+        5.0,
+        7.0
+      ],
+      "measured": 5.999999999999999,
+      "ok": true,
+      "note": "analytic: length of the mean-mass cell of a growing population"
+    },
+    {
+      "id": "mx.kill_time",
+      "role": "range",
+      "quantity": "time from contact to prey death",
+      "unit": "s",
+      "target": 450.0,
+      "sd": null,
+      "range": [
+        300.0,
+        600.0
+      ],
+      "measured": 450.0,
+      "ok": true,
+      "note": "1 / predation rate (a fully capable predator in contact)"
+    },
+    {
+      "id": "mx.maintenance",
+      "role": "assumed",
+      "quantity": "non-growth-associated maintenance, glucose equivalents",
+      "unit": "mmol glucose/gDW/h",
+      "target": 0.37,
+      "sd": null,
+      "range": [
+        0.32,
+        0.42
+      ],
+      "measured": null,
+      "ok": null,
+      "note": "no sugar growth: not measurable; the placeholder is set directly"
+    },
+    {
+      "id": "mx.generation_time",
+      "role": "reference",
+      "quantity": "generation time in casitone medium, 30 C",
+      "unit": "h",
+      "target": 5.1,
+      "sd": null,
+      "range": null,
+      "measured": null,
+      "ok": null,
+      "note": "the model grows M. xanthus on prey only"
+    },
+    {
+      "id": "mx.development",
+      "role": "reference",
+      "quantity": "time from starvation to first visible aggregates (13-14 h), to fruiting bodies (about 22 h), spore fraction (about 10 %)",
+      "unit": "h",
+      "target": 13.5,
+      "sd": null,
+      "range": null,
+      "measured": null,
+      "ok": null,
+      "note": "see docs/ORGANISMS.md for what the simulated development shows"
+    },
+    {
+      "id": "mutation.snv_rate",
+      "role": "range",
+      "quantity": "base-pair substitution rate per nucleotide per generation",
+      "unit": "1/nt/generation",
+      "target": 2.2e-10,
+      "sd": null,
+      "range": [
+        1.88e-10,
+        3e-10
+      ],
+      "measured": 2e-10,
+      "ok": true,
+      "note": "frozen D4 rate"
+    },
+    {
+      "id": "bsub.sporulation_time",
+      "role": "range",
+      "quantity": "time for a cell to complete sporulation",
+      "unit": "s",
+      "target": 28800.0,
+      "sd": null,
+      "range": [
+        28800.0,
+        36000.0
+      ],
+      "measured": 28800.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "diffusion.glucose",
+      "role": "range",
+      "quantity": "diffusion coefficient of glucose in water, 20 C",
+      "unit": "um^2/s",
+      "target": 600.0,
+      "sd": null,
+      "range": [
+        540.0,
+        660.0
+      ],
+      "measured": 600.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "diffusion.lactose",
+      "role": "range",
+      "quantity": "diffusion coefficient of lactose in water, 20 C",
+      "unit": "um^2/s",
+      "target": 430.0,
+      "sd": null,
+      "range": [
+        390.0,
+        470.0
+      ],
+      "measured": 450.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "id": "diffusion.oxygen",
+      "role": "reference",
+      "quantity": "diffusion coefficient of oxygen in water, room temperature",
+      "unit": "um^2/s",
+      "target": 2000.0,
+      "sd": null,
+      "range": null,
+      "measured": 1400.0,
+      "ok": null,
+      "note": "capped by the explicit scheme's stability"
+    }
+  ],
+  "validation_cycle": {
+    "GCF_000005845.2": {
+      "mean_division_time_s": 3852.020833333333,
+      "divisions": 8.0,
+      "expected_s": 3868.973474518487,
+      "growth_rate_per_h": 0.6499992423961164,
+      "doubling_time_min_equivalent": 63.982891241974784
+    },
+    "GCF_000009045.1": {
+      "mean_division_time_s": 3742.5249999999996,
+      "divisions": 8.0,
+      "expected_s": 3754.3773525356487,
+      "growth_rate_per_h": 0.6699992008911021,
+      "doubling_time_min_equivalent": 62.07295587559414
+    },
+    "GCF_000006765.1": {
+      "mean_division_time_s": 2757.5770833333336,
+      "divisions": 8.0,
+      "expected_s": 2772.1226053022515,
+      "growth_rate_per_h": 0.9099993724535721,
+      "doubling_time_min_equivalent": 45.7020434217042
+    },
+    "GCF_000010465.1": {
+      "mean_division_time_s": 2407.054166666667,
+      "divisions": 8.0,
+      "expected_s": 2406.5054860360824,
+      "growth_rate_per_h": 1.0499996169493027,
+      "doubling_time_min_equivalent": 39.60842476726804
+    }
+  }
+}

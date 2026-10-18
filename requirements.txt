@@ -1,0 +1,9 @@
+# pygame-ce, not pygame. Measured on 2026-10-17: this machine runs Python 3.15,
+# and `pip install --only-binary=:all: pygame` reports "No matching distribution
+# found for pygame". pygame-ce (the community fork) ships a cp315 win_amd64 wheel
+# and installs cleanly. It keeps the module name, so `import pygame` is unchanged —
+# only the distribution name differs. Verified: pygame-ce 2.5.8, SDL 2.32.10,
+# headless display init OK, Surface.blits available.
+numpy>=1.26
+pygame-ce>=2.5
+pytest>=8
